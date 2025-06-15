@@ -26,6 +26,7 @@ public class CustomArrayList<T> extends AbstractList<T> {
         elements = Arrays.copyOf(elements, newSize);
     }
 
+
     @Override
     public T get(int index) {
         if(index > size || index <0)
@@ -38,7 +39,7 @@ public class CustomArrayList<T> extends AbstractList<T> {
     @Override
     public int indexOf(Object obj){
         for(int i = 0; i<size ; i++){
-            if(elements[i] != null && obj != null && elements[i] == obj)
+            if( obj != null && elements[i] != null && elements[i] == obj)
                 return i;
         }
         return -1;
@@ -57,7 +58,7 @@ public class CustomArrayList<T> extends AbstractList<T> {
          throw new IndexOutOfBoundsException("Index passes is out of bound");
         T removeElement = (T) elements[index];
         System.arraycopy(elements, index+1, elements, index, size - index -1);
-        elements[--size] = null;
+        elements[--size] = null; // to null out the duplicate
         return removeElement;
     }
 
@@ -73,8 +74,8 @@ public class CustomArrayList<T> extends AbstractList<T> {
         list.add(4);
         list.add(5);
         System.out.println(list);
-        list.remove(2);
-        System.out.println(list);
+        int x = list.remove(2);
+        System.out.println(x);
         System.out.println(list.size);
         list.add(3);
         list.add(6);
