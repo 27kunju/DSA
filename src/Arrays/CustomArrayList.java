@@ -87,7 +87,5 @@ public class CustomArrayList<T> extends AbstractList<T> {
 //        System.out.println(list.get(10));// to demo index out of bound exception
         System.out.println(list.contains(11));
 
-
-
     }
 }
