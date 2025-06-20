@@ -36,7 +36,7 @@ public class CustomHashMap<K, V> {
         }
 
         for (Node<K, V> node : buckets[index]) {
-            if (Objects.equals(node.key, key)) { // ✅ Fixed bug here
+            if (Objects.equals(node.key, key)) {
                 V oldValue = node.value;
                 node.value = value;
                 return oldValue;

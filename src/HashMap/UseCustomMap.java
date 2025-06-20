@@ -1,7 +1,10 @@
 package HashMap;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class UseCustomMap {
     public static void main(String[] args) {
@@ -41,9 +44,7 @@ public class UseCustomMap {
         map.clear();
         System.out.println("Map cleared. Size: " + map.size()); // 0
 
-
         //using customhashset
-
         CustomHashSet<String> sets = new CustomHashSet<>();
         sets.add("Dog");
         sets.add("cat");
@@ -53,5 +54,21 @@ public class UseCustomMap {
             String key = setsIt.next();
             System.out.println("  " + key);
         }
+
+        List<Integer> list = new ArrayList<>();
+
+        LocalDate thirtyDaysAgo = LocalDate.now().minusDays(30);
+        System.out.println(thirtyDaysAgo);
+
+
+//
+//        list.add(2);
+//        list.add(4);
+//        list.add(5);
+//        Iterator listIterator = list.iterator();
+//
+//        while(listIterator.hasNext()){
+//            System.out.println(listIterator.next());
+//        }
     }
 }
