@@ -57,7 +57,7 @@ public class ArrayRotation {
         //putting temp element to arr to end
 
         for(int i=0; i<k; i++){
-            arr[size - k+i] = temp[i];
+            arr[size-k + i] = temp[i];
         }
 
         System.out.println("Left Shifting elements by k places");
@@ -69,7 +69,7 @@ public class ArrayRotation {
 
     public static void rightRotation(int[] arr,int size){
         int temp = arr[size-1];
-        for(int i = size -1; i>=0; i--){
+        for(int i = size -2; i>=0; i--){
             arr[i+1] = arr[i];
         }
         arr[0] = temp;
