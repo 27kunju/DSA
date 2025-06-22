@@ -2,16 +2,13 @@ package Arrays.sortingTechniques;
 
 public class Insertsort {
 
-    
     public static void main(String[] args) {
         int[] arr = {8,7,6,5,4};
-        System.out.println("hello");
         insertionSort(arr);
         System.out.println("sorted");
         for(int x: arr){
             System.out.println(x + " ");
         }
-
     }
 
     public static void insertionSort(int[] arr){
@@ -25,6 +22,5 @@ public class Insertsort {
             }
             arr[j+1] = key;
         }
-
     }
 }

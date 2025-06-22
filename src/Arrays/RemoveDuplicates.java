@@ -7,7 +7,6 @@ public class RemoveDuplicates {
 
         //works for sorted array
         java.util.Arrays.sort(nums);
-
         int newLength = removeDup(nums);
         System.out.println("After removing duplicates");
         for(int i =0; i<newLength ; i++){
