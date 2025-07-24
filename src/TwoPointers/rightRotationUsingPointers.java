@@ -1,15 +1,15 @@
 package TwoPointers;
 
-public class LeftRotationUsingPointers {
+public class rightRotationUsingPointers {
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7,8};
         int k = 4;
-        leftRotation(arr, k);
+        rightRotation(arr,k);
         for(int x : arr){
             System.out.println(x);
         }
     }
-    public static void leftRotation(int[] arr, int k){
+    public static void rightRotation(int[] arr, int k){
         int n = arr.length;
         k = k%n;
         reverse(arr,0, n-1);
