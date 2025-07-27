@@ -4,10 +4,11 @@ import java.util.Arrays;
 public class TwoSumUsingPointers{
     public static void main(String[] args) {
         int[] arr = {2, 8, 3, 6, 4};
-        int target = 7;
+        //sorted array
+        int target = 9;
         int[] ans = findpairs(arr,target);
         for(int x: ans){
-            System.out.println(x);
+            System.out.print(x );
         }
     }
     public static int[] findpairs(int[] arr, int target){
