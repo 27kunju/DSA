@@ -7,11 +7,9 @@ public class ReverseArray {
         //create temp arr
         int[] temp = new int[arr.length];
         int n = arr.length;
-        String s = "ASD";
 
-
-        // Traverse arr in revrese direction
-        // and copy data to tmep
+        // Traverse arr in reverse direction
+        // and copy data to temp
         for (int i = 0; i < n; i++) {
             temp[i] = arr[n - 1 - i];
         }

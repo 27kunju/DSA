@@ -6,6 +6,8 @@ public class MaxWaterContainer {
         int max = findMaxAreaUsingPointers(heights);
         System.out.println(max);
     }
+
+    // in brute force we check all the possible
     public static int findMaxArea(int[] heights){
         int res = 0;
         for(int i =0 ; i<heights.length ; i++){
@@ -17,6 +19,8 @@ public class MaxWaterContainer {
         return res;
     }
 
+    //here we look to move pointers which heights can give max area.
+    // if the heights are equal , we can any any pointers
     public static int findMaxAreaUsingPointers(int[] heights){
         int l = 0;
         int r = heights.length -1;

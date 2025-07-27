@@ -1,175 +1,164 @@
 package LinkedList;
 
-class myNode{
+class myNode {
     int data;
-    myNode  next;
+    myNode next;
 
-    public myNode(int data){
+    public myNode(int data) {
         this.data = data;
         this.next = null;
     }
 }
 
-class customLLImpl{
+class customLLImpl {
     private myNode head;
+    private int size;
 
-    public customLLImpl(){
+    public customLLImpl() {
         head = null;
+        size = 0;
     }
 
-    public void addFirst(int data){
+    public void addFirst(int data) {
         myNode newNode = new myNode(data);
         newNode.next = head;
-        head  = newNode;
+        head = newNode;
+        size++;
     }
 
-    public void addLast(int data){
+    public void addLast(int data) {
         myNode newNode = new myNode(data);
-
-        if(head == null){
+        if (head == null) {
             head = newNode;
+        } else {
+            myNode curr = head;
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+            curr.next = newNode;
         }
-
-        myNode curr = head;
-        while(curr.next != null){
-            curr = curr.next;
-        }
-
-        curr.next = newNode;
-        newNode.next = null;
+        size++;
     }
 
-    public void add(int data, int position){
-        myNode newNode  = new myNode(data);
-        if(head == null){
-            head = newNode;
-        }
+    public void insertAtPosition(int data, int position) {
+        try {
+            if (position < 0 || position > size) {
+                throw new IndexOutOfBoundsException("Invalid position: " + position);
+            }
 
-        if(position == 0){
-            addFirst(data);
-        }
+            if (position == 0) {
+                addFirst(data);
+                return;
+            }
 
-        myNode curr = head;
-        int index = 0;
-        while(curr != null && index < position -1){
-            curr = curr.next;
-            index++;
+            myNode newNode = new myNode(data);
+            myNode curr = head;
+
+            for (int i = 0; i < position - 1; i++) {
+                curr = curr.next;
+            }
+
+            newNode.next = curr.next;
+            curr.next = newNode;
+            size++;
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        if(curr == null){
-            System.out.println("position out of range");
-            return;
-        }
-        newNode.next = curr.next;
-        curr.next = newNode;
+    }
+
+    public void InsertRecurssion(int val , int index){
 
     }
 
-    public void removeFirst(){
-        if(head == null){
-            System.out.println("no data to delete");
+
+    public void removeFirst() {
+        if (head == null) {
+            System.out.println("No data to delete");
             return;
         }
         head = head.next;
+        size--;
     }
 
     public void removeLast() {
-        // Case 1: Empty list
         if (head == null) {
             System.out.println("List is empty");
             return;
         }
 
-        // Case 2: Only one element
         if (head.next == null) {
             head = null;
-            return;
+        } else {
+            myNode current = head;
+            while (current.next.next != null) {
+                current = current.next;
+            }
+            current.next = null;
         }
-
-        // Case 3: More than one node
-        myNode current = head;
-        while (current.next.next != null) {
-            current = current.next;
-        }
-
-        // Remove last node
-        current.next = null;
+        size--;
     }
 
-
     public void removeAtPosition(int position) {
-        if (head == null) {
-            throw new IndexOutOfBoundsException("List is empty");
+        if (position < 0 || position >= size) {
+            throw new IndexOutOfBoundsException("Position out of range: " + position);
         }
 
-        // Case 1: Remove head
         if (position == 0) {
-            head = head.next;
+            removeFirst();
             return;
         }
 
-        // Traverse to the node just before the one to remove
         myNode current = head;
         int index = 0;
 
-        while (current != null && index < position - 1) {
+        while (index < position - 1) {
             current = current.next;
             index++;
         }
 
-        // If position is out of bounds
-        if (current == null || current.next == null) {
-            throw new IndexOutOfBoundsException("Position out of range");
-        }
-
-        // Remove node by skipping it
         current.next = current.next.next;
+        size--;
     }
 
-
-    public boolean contains(int data){
+    public boolean contains(int data) {
         myNode current = head;
-        while(current !=null){
-            if( current.data == data)
+        while (current != null) {
+            if (current.data == data)
                 return true;
             current = current.next;
         }
         return false;
     }
 
-    public void display(){
-        if(head == null){
-            System.out.println("list is empty");
+    public void display() {
+        if (head == null) {
+            System.out.println("List is empty");
             return;
         }
         myNode curr = head;
-        while(curr !=  null){
-            System.out.println(curr.data + " ->");
+        while (curr != null) {
+            System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
+        System.out.println("null");
     }
 
+    public int getSize() {
+        return size;
+    }
 }
 
-public class CustomLinkedList {
-    public static void main(String[] args) {
-        customLLImpl  list = new customLLImpl();
+public class CustomLinkedList{
+    public static void main(String[] args) throws Exception {
+        customLLImpl list = new customLLImpl();
         list.addFirst(10);
         list.addFirst(20);
         list.addLast(30);
-        list.add(25,2);
-        list.addFirst(5);
-        list.display();
+        list.insertAtPosition(90, 10);  // now position is validated using size
 
-        list.removeFirst();
         list.display();
-
-        list.removeAtPosition(3);
-        list.display();
-
-        list.removeLast();
-        list.display();
-
-        //searching for element
-        System.out.println("is element present"+list.contains(20));
+        System.out.println("Size: " + list.getSize());
+        System.out.println(list.contains(15));
     }
 }

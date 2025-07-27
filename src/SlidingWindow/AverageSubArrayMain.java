@@ -9,7 +9,6 @@ public class AverageSubArrayMain {
     }
 
     public static double findMaxAverage(int[] nums, int k) {
-
         int i = 0;
         int j =0;
         double sum = 0;

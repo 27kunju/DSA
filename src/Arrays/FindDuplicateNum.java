@@ -3,9 +3,10 @@ package Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+//this find the first duplicate num
 public class FindDuplicateNum {
     public static void main(String[] args) {
-        int[] arr = {3,3,3,3,3};
+        int[] arr = {3,6,8,8,8,10,10, 12,15,15,15,20};
         int dupNum = getDup(arr);
         int dupNum2 = getDupOpti(arr);
         System.out.println(dupNum + " " + dupNum2);

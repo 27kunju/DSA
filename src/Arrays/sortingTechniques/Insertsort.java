@@ -7,7 +7,7 @@ public class Insertsort {
         insertionSort(arr);
         System.out.println("sorted");
         for(int x: arr){
-            System.out.println(x + " ");
+            System.out.print(x + " ");
         }
     }
 

@@ -19,7 +19,7 @@ public class MinSubArraySize {
                 sum -= arr[l++];
             }
         }
-        return min;
+        return (min == Integer.MAX_VALUE) ? 0 : min;
 
     }
 }

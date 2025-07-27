@@ -8,13 +8,21 @@ public class CheckIfArraySorted {
 
     }
 
+
+    //When i == n - 1 (the last element), i + 1 == n, which is out of bounds.
+    //
+    //To safely compare the last element nums[n - 1] to the first element nums[0], we write:
+    //nums[(i + 1) % n]
+    // array can sorted and rotated too .
     public static boolean isSorted(int[] arr){
         int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
-                return false;  // Not strictly sorted
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > arr[(i + 1) % n]) {
+                count++;
             }
         }
-        return true;  //
+        return count <=1;
     }
-}
+    }
+
