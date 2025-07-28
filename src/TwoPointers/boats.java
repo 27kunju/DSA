@@ -20,6 +20,7 @@ public class boats {
                 continue;
             }
             int remain = limit - people[r--];
+
             res++;
             if (l <= r && remain >= people[l]) {
                 l++;
