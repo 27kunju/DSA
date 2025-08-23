@@ -14,13 +14,13 @@ public class ArrayRotation {
         int k = 2;
 
         //left rotate by 1 place
-        leftRotation(arr, size);
+//        leftRotation(arr, size);
 
         // left rotate by k places
-        leftRotationByK(arr, size, k);
+//        leftRotationByK(arr, size, k);
 
         //right rotate by 1 place
-        rightRotation(arr, size);
+//        rightRotation(arr, size);
 
         //right rotate by k places
         rightRotationByk(arr, size, k);
@@ -89,7 +89,7 @@ public class ArrayRotation {
         }
 
         //shifting the remaining elements to end
-        for(int i = size -k -1 ; i>=0; i--){
+        for(int i = k ; i>=0; i--){
             arr[i+k] = arr[i];
         }
 

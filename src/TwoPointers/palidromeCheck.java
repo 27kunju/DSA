@@ -2,7 +2,7 @@ package TwoPointers;
 
 public class palidromeCheck {
     public static void main(String[] args) {
-        String s = "race car rac ecar";
+        String s = "race#car rac$ecar";
         System.out.println(palindromeChecker(s));
     }
     public static  boolean palindromeChecker(String s) {
@@ -14,7 +14,7 @@ public class palidromeCheck {
             while (l < r && !Character.isLetterOrDigit(s.charAt(l))) {
                 l++;
             }
-            while (l < r && !Character.isLetterOrDigit(s.charAt(r))) {
+            while (r > l  && !Character.isLetterOrDigit(s.charAt(r))) {
                 r--;
             }
 

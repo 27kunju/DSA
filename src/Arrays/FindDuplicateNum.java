@@ -28,7 +28,7 @@ public class FindDuplicateNum {
             }
         }
 
-        return n;
+        return -1;
     }
 
     public static int getDupOpti(int[] arr){

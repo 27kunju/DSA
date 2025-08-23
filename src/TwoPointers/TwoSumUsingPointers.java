@@ -7,8 +7,8 @@ public class TwoSumUsingPointers{
         //sorted array
         int target = 9;
         int[] ans = findpairs(arr,target);
-        for(int x: ans){
-            System.out.print(x );
+        for (int i = 0; i < ans.length; i += 2) {
+            System.out.println("(" + ans[i] + ", " + ans[i+1] + ")");
         }
     }
     public static int[] findpairs(int[] arr, int target){

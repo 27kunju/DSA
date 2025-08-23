@@ -11,13 +11,13 @@ class myNode {
 }
 
 class customLLImpl {
-    private myNode head;
-    private int size;
+    private myNode head = null;
+    private int size = 0;
 
-    public customLLImpl() {
-        head = null;
-        size = 0;
-    }
+//    public customLLImpl() {
+//        head = null;
+//        size = 0;
+//    }
 
     public void addFirst(int data) {
         myNode newNode = new myNode(data);
@@ -67,9 +67,25 @@ class customLLImpl {
         }
     }
 
-    public void InsertRecurssion(int val , int index){
-
+    public void insertAtPositionUsingRecursion(int val, int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+        head = insertRecursively(head, val, index);
+        size++;
     }
+
+    private myNode insertRecursively(myNode node, int val, int index) {
+        if (index == 0) {
+            myNode newNode = new myNode(val);
+            newNode.next = node;
+            return newNode;
+        }
+        node.next = insertRecursively(node.next, val, index - 1);
+        return node;
+    }
+
+
 
 
     public void removeFirst() {
@@ -96,7 +112,7 @@ class customLLImpl {
             }
             current.next = null;
         }
-        size--;
+        size = Math.max(0, size - 1);
     }
 
     public void removeAtPosition(int position) {
@@ -130,6 +146,28 @@ class customLLImpl {
         }
         return false;
     }
+
+    public myNode insertSortedLL(myNode head, int x) {
+        myNode newNode = new myNode(x);
+
+        // Case 1: x is smaller than head -> insert at the beginning
+        if (head == null || x < head.data) {
+            newNode.next = head;
+            return newNode;  // new node becomes the new head
+        }
+
+        // Case 2: traverse to the correct position
+        myNode current = head;
+        while (current.next != null && current.next.data < x) {
+            current = current.next;
+        }
+
+        newNode.next = current.next;
+        current.next = newNode;
+
+        return head;  // head remains the same
+    }
+
 
     public void display() {
         if (head == null) {

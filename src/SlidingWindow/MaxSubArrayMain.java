@@ -11,7 +11,7 @@ public class MaxSubArrayMain {
     public static int MaxSubArray(int[] arr, int k ){
 
         int max = Integer.MIN_VALUE;
-        int i = 0;  int j = 0 ; int sum = 0;
+        int i = 0, j = 0, sum = 0;
 
         while(j< arr.length){
             sum += arr[j];
