@@ -5,10 +5,36 @@ import java.util.*;
 public class TrappingRainWater {
     public static void main(String[] args) {
         int[] height = {3,0,0,2,0 , 4};
-        System.out.println("Trapped Rain Water = " + trap2(height));
+        System.out.println("Trapped Rain Water = " + trap3(height));
     }
 
-    public static int trap(int[] height) {
+    //using bruteforce
+    public int trap1(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        int n = height.length;
+        int res = 0;
+
+        for (int i = 0; i < n; i++) {
+            int leftMax = height[i];
+            int rightMax = height[i];
+
+            for (int j = 0; j < i; j++) {
+                leftMax = Math.max(leftMax, height[j]);
+            }
+            for (int j = i + 1; j < n; j++) {
+                rightMax = Math.max(rightMax, height[j]);
+            }
+
+            res += Math.min(leftMax, rightMax) - height[i];
+        }
+        return res;
+    }
+
+
+    //using stack
+    public static int trap2(int[] height) {
         int n = height.length;
         Stack<Integer> st = new Stack<>();
         int ans = 0;
@@ -30,7 +56,9 @@ public class TrappingRainWater {
         return ans;
     }
 
-    public static int trap2(int[] height) {
+
+    //using 2 pointers
+    public static int trap3(int[] height) {
         if (height == null || height.length == 0) {
             return 0;
         }
