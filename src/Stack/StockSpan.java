@@ -21,6 +21,7 @@ public class StockSpan {
                 span[i] = i + 1;
             } else {
                 span[i] = i - s.peek();
+
             }
 
             // Push current index

@@ -31,6 +31,8 @@ public class NextGreatestLeft {
             s.push(arr[i]);
         }
 
+        System.out.println("Final Stack (bottom to top): " + s);
+
         System.out.println("Next Greater to Left: " + Arrays.toString(ans));
     }
 }
