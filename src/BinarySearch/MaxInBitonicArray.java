@@ -31,6 +31,8 @@ public class MaxInBitonicArray {
         int[] arr1 = {1, 3, 8, 12, 4, 2};
         int[] arr2 = {3, 9, 10, 20, 17, 5, 1};
 
+        //bitonic array is monotonically increaseing and decreasing
+
         System.out.println("Max in arr1: " + findMax(arr1)); // 12
         System.out.println("Max in arr2: " + findMax(arr2)); // 20
     }
