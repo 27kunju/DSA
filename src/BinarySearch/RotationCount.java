@@ -2,6 +2,8 @@ package BinarySearch;
 
 public class RotationCount {
 
+    //find the index of of minimum ele
+    // minimum ele will be smaller to left and right element
     public static int countRotations(int[] arr) {
         int n = arr.length;
         int low = 0, high = n - 1;

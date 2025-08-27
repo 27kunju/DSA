@@ -12,10 +12,10 @@ public class FirstAndLastOccurrence {
             if (arr[mid] == target) {
                 ans = mid;       // possible answer
                 high = mid - 1;  // look left
-            } else if (arr[mid] < target) {
-                low = mid + 1;
+            } else if (target < arr[mid]) {
+                high = mid -1;
             } else {
-                high = mid - 1;
+                low  = mid + 1;
             }
         }
         return ans;
@@ -31,10 +31,10 @@ public class FirstAndLastOccurrence {
             if (arr[mid] == target) {
                 ans = mid;      // possible answer
                 low = mid + 1;  // look right
-            } else if (arr[mid] < target) {
-                low = mid + 1;
+            } else if (target < arr[mid]) {
+               high = mid-1;
             } else {
-                high = mid - 1;
+               low = low+1;
             }
         }
         return ans;

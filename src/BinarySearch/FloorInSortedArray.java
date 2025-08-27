@@ -11,11 +11,13 @@ public class FloorInSortedArray {
 
             if (arr[mid] == x) {
                 return arr[mid]; // exact match is the floor
-            } else if (arr[mid] < x) {
+            } else if ( x< arr[mid]) {
+                high = mid -1;
+
+            } else {
+
                 ans = arr[mid];  // potential floor
                 low = mid + 1;
-            } else {
-                high = mid - 1;
             }
         }
         return ans;

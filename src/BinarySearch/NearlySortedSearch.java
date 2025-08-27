@@ -35,6 +35,8 @@ public class NearlySortedSearch {
         int[] arr = {10, 3, 40, 20, 50, 80, 70};
         int target = 40;
 
+
+        //the element which supposed to be in ith position can be present in i, or i+1, i-1
         int index = searchNearlySorted(arr, target);
         System.out.println("Element " + target + " found at index: " + index);
     }

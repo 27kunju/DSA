@@ -9,10 +9,10 @@ public class InfiniteSortedArray {
 
             if (arr[mid] == target) {
                 return mid;
-            } else if (arr[mid] < target) {
-                low = mid + 1;
+            } else if (target < arr[mid]) {
+                high = mid -1 ;
             } else {
-                high = mid - 1;
+                low = low+1;
             }
         }
         return -1; // not found
@@ -22,11 +22,9 @@ public class InfiniteSortedArray {
     public static int searchInfiniteArray(int[] arr, int target) {
         int low = 0, high = 1;
 
-        // Step 1: Expand range exponentially until target <= arr[high]
-        while (high < arr.length && arr[high] < target) {
+        while(target > arr[high]){
             low = high;
-            high = high * 2;
-            if (high >= arr.length) high = arr.length - 1; // safety for real arrays
+            high = high*2;
         }
 
         // Step 2: Apply binary search in [low, high]

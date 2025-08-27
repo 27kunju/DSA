@@ -8,10 +8,9 @@ public class CeilInSortedArray {
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
-
             if (arr[mid] == x) {
                 return arr[mid]; // exact match is the ceil
-            } else if (arr[mid] > x) {
+            } else if (x < arr[mid]) {
                 ans = arr[mid];  // potential ceil
                 high = mid - 1;
             } else {
@@ -22,10 +21,11 @@ public class CeilInSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 8, 10, 10, 12, 19};
+        int[] arr = {1, 2,4, 8, 10, 10, 12, 19};
         int x = 5;
 
         int ceil = findCeil(arr, x);
+        // ciel of number is smallest greater number
         System.out.println("Ceil of " + x + " is: " + ceil);
     }
 }

@@ -9,7 +9,6 @@ public class FirstOneInInfiniteBinaryArray {
         while (arr[high] == 0) {
             low = high;
             high = high * 2;
-            if (high >= arr.length) high = arr.length - 1; // safety for real arrays
         }
 
         // Step 2: Binary search for first 1
@@ -28,7 +27,7 @@ public class FirstOneInInfiniteBinaryArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {0, 0, 0, 0, 1, 1, 1, 1, 1, 1}; // simulate infinite array
+        int[] arr = {0, 0, 0, 0,0, 0,0 ,1, 1, 1, 1, 1, 1}; // simulate infinite array
         int index = firstOne(arr);
         System.out.println("First occurrence of 1 is at index: " + index);
     }

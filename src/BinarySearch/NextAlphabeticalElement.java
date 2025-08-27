@@ -9,7 +9,7 @@ public class NextAlphabeticalElement {
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if (arr[mid] > x) {
+            if (x < arr[mid]) {
                 ans = arr[mid];  // potential answer
                 high = mid - 1;  // look for smaller valid letter
             } else {
@@ -21,10 +21,10 @@ public class NextAlphabeticalElement {
     }
 
     public static void main(String[] args) {
-        char[] arr = {'a', 'c', 'f', 'h'};
-        char x = 'f';
+        char[] arr = {'a', 'c', 'f', 'h' , 'i'};
 
-        char result = nextLetter(arr, x);
-        System.out.println("Next letter after " + x + " is: " + result);
+        char ch = 'f';
+        char result = nextLetter(arr, ch);
+        System.out.println("Next letter after " + ch + " is: " + result);
     }
 }
