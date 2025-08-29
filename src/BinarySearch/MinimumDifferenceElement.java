@@ -11,10 +11,10 @@ public class MinimumDifferenceElement {
 
             if (arr[mid] == target) {
                 return arr[mid];  // exact match
-            } else if (arr[mid] < target) {
-                low = mid + 1;
+            } else if (target < arr[mid]) {
+                high = mid -1 ;
             } else {
-                high = mid - 1;
+               low = mid+1;
             }
         }
 

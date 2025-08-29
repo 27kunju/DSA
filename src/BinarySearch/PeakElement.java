@@ -2,51 +2,53 @@ package BinarySearch;
 
 public class PeakElement {
 
-    public static int peakElement(int[] arr) {
+    // O(log n) - finds any one peak element
+    public static int findOnePeak(int[] arr) {
         int n = arr.length;
         int low = 0, high = n - 1;
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if( mid > 0 && mid < n-1){
-                if(arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1]){
-                    return mid;
-                }else if(arr[mid-1]> arr[mid]){
-                    high = mid-1;
-                }else{
-                    low = mid+1;
-                }
+            // check if mid is peak
+            if (arr[mid] > arr[mid - 1] &&
+                     arr[mid] > arr[mid + 1]){
+                return mid;
             }
 
-            else if(mid == 0){
-                if(arr[0] > arr[1]){
-                    return 0;
-                }else{
-                    return 1;
-                }
-            }else if(mid == n-1){
-                if(arr[n-1] > arr[n-2]){
-                    return n-1;
-                }else{
-                    return n-2;
-                }
-
+            // if left neighbor is greater, move left
+            if (arr[mid - 1] > arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-        return -1; // should not happen
+        return -1; // shouldn't happen
+    }
+
+    // O(n) - finds all peaks
+    public static java.util.List<Integer> findAllPeaks(int[] arr) {
+        java.util.List<Integer> peaks = new java.util.ArrayList<>();
+        int n = arr.length;
+
+        for (int i = 0; i < n; i++) {
+            if ((i == 0 && arr[i] > arr[i + 1]) ||
+                    (i == n - 1 && arr[i] > arr[i - 1]) ||
+                    (i > 0 && i < n - 1 && arr[i] > arr[i - 1] && arr[i] > arr[i + 1])) {
+                peaks.add(i);
+            }
+        }
+        return peaks;
     }
 
     public static void main(String[] args) {
         int[] arr1 = {1, 2, 3, 1};
-        int[] arr2 = {8, 2, 1, 3, 5, 6, 7};
+        int[] arr2 = {8, 2, 1, 3, 5, 1};
 
-        //peak element will be greater element than its left and right
-        // while searching ,search in the side which has possibility of getting greater element
+        System.out.println("One peak in arr1: " + findOnePeak(arr1));
+        System.out.println("One peak in arr2: " + findOnePeak(arr2));
 
-        System.out.println("Peak element index in arr1: " + peakElement(arr1));
-        System.out.println("Peak element index in arr2: " + peakElement(arr2));
+        System.out.println("All peaks in arr1: " + findAllPeaks(arr1));
+        System.out.println("All peaks in arr2: " + findAllPeaks(arr2));
     }
 }
-
-

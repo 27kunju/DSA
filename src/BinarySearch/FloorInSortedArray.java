@@ -24,7 +24,7 @@ public class FloorInSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 8, 10, 10, 12, 19};
+        int[] arr = {1, 2, 4,8, 10, 10, 12, 19};
         int x = 5;
 
         int floor = findFloor(arr, x);
