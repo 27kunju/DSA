@@ -6,10 +6,10 @@ import java.util.Set;
 //this find the first duplicate num
 public class FindDuplicateNum {
     public static void main(String[] args) {
-        int[] arr = {3,6,8,8,8,10,10, 12,15,15,15,20};
+        int[] arr = {1,2,4,1,27,11,3,4,4};
         int dupNum = getDup(arr);
         int dupNum2 = getDupOpti(arr);
-        System.out.println(dupNum + " " + dupNum2);
+        System.out.println(  dupNum2);
 
     }
 
