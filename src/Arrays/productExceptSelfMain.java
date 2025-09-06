@@ -1,5 +1,8 @@
 package Arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class productExceptSelfMain{
     //brute force
     public int[] productExceptSelf(int[] nums) {
@@ -36,6 +39,27 @@ public class productExceptSelfMain{
         }
 
         return res;
+    }
+
+    public List<Integer> findDuplicatesContantSpace(int[] nums){
+        List<Integer> resultSet = new ArrayList<>();
+
+        for(int i =0; i<nums.length ;i++){
+            //get the index ,the element corresponds to
+            int index = Math.abs(nums[i])-1;
+
+            //if the number is already negative, it mean we are
+            //encountering it twice
+            if(nums[index] <0){
+                resultSet.add(index+1);
+            }
+
+            //flip the number at the index to negative
+            nums[index] = nums[index]* -1;
+
+        }
+
+        return resultSet;
     }
 
 }
