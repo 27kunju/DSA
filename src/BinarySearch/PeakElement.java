@@ -2,29 +2,48 @@ package BinarySearch;
 
 public class PeakElement {
 
-    // O(log n) - finds any one peak element
     public static int findOnePeak(int[] arr) {
         int n = arr.length;
+        if (n == 1) return 0;  // only one element, it's the peak
+
         int low = 0, high = n - 1;
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            // check if mid is peak
-            if (arr[mid] > arr[mid - 1] &&
-                     arr[mid] > arr[mid + 1]){
-                return mid;
+            // Case 1: First element
+            if (mid == 0) {
+                if (arr[mid] >= arr[mid + 1]) {
+                    return mid;
+                } else {
+                    low = mid + 1;
+                }
             }
 
-            // if left neighbor is greater, move left
-            if (arr[mid - 1] > arr[mid]) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+            // Case 2: Last element
+            else if (mid == n - 1) {
+                if (arr[mid] >= arr[mid - 1]) {
+                    return mid;
+                } else {
+                    high = mid - 1;
+                }
+            }
+
+            // Case 3: Middle elements
+            else {
+                if (arr[mid] >= arr[mid - 1] && arr[mid] >= arr[mid + 1]) {
+                    return mid;
+                } else if (arr[mid - 1] > arr[mid]) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
             }
         }
-        return -1; // shouldn't happen
+        return -1;
     }
+
+
 
     // O(n) - finds all peaks
     public static java.util.List<Integer> findAllPeaks(int[] arr) {
@@ -42,10 +61,13 @@ public class PeakElement {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 2, 3, 1};
-        int[] arr2 = {8, 2, 1, 3, 5, 1};
+        // arrs will be sorted in peak element problem
+        int[] arr1 = {1,2,3,1};
+        int[] arr2 = {1,2,1,3,5,6,4};
+        int[] arr3 = {1};
 
-        System.out.println("One peak in arr1: " + findOnePeak(arr1));
+
+        System.out.println("One peak in arr1: " + findOnePeak(arr3));
         System.out.println("One peak in arr2: " + findOnePeak(arr2));
 
         System.out.println("All peaks in arr1: " + findAllPeaks(arr1));

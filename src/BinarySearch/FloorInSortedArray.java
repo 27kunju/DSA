@@ -15,7 +15,6 @@ public class FloorInSortedArray {
                 high = mid -1;
 
             } else {
-
                 ans = arr[mid];  // potential floor
                 low = mid + 1;
             }
