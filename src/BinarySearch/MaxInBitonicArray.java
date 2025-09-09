@@ -29,7 +29,7 @@ public class MaxInBitonicArray {
 
     public static void main(String[] args) {
         int[] arr1 = {1, 3, 8, 12, 4, 2};
-        int[] arr2 = {3, 9, 10, 20, 17, 5, 1};
+        int[] arr2 = {1,2,3,4,5,6,7};
 
         //bitonic array is monotonically increaseing and decreasing
 
