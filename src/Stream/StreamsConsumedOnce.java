@@ -1,7 +1,9 @@
 package Stream;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Arrays;
 
 public class StreamsConsumedOnce {
 
@@ -21,8 +23,31 @@ public class StreamsConsumedOnce {
 
         //trying to reuse the same stream
         // IllegalStateException exception is thrown
-        stream.filter(n -> n.startsWith("I"))
-                .forEach(System.out::println);
+//        stream.filter(n -> n.startsWith("I"))
+//                .forEach(System.out::println);
+
+        List<Integer> nums = Arrays.asList(1,2,4,5);
+
+        int max = nums.stream().mapToInt(Integer::intValue).max().getAsInt();
+        System.out.println(max);
+
+        List<String> stringList = Arrays.asList("Ashwini", "Tanu","Ammu");
+
+//        String res = stringList.stream().collect(Collectors.joining(","));
+
+
+        String res = String.join(",", stringList);
+
+        System.out.println(res);
+
+        int[] arr = {1,2,3,4};
+
+        int sum = Arrays.stream(arr).sum();
+
+        List<Integer> nums1 = Arrays.asList(1,2,3,4,5);
+
+        int sum2 = nums1.stream().mapToInt(Integer::intValue).sum();
+        System.out.println(sum2);
 
 
 

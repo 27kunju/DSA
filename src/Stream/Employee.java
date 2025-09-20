@@ -1,6 +1,7 @@
 package Stream;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Employee {
 
@@ -71,5 +72,17 @@ public class Employee {
                 ", salary=" + salary +
                 ", skills=" + skills +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id) && Objects.equals(name, employee.name) && Objects.equals(salary, employee.salary) && Objects.equals(skills, employee.skills) && Objects.equals(department, employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, salary, skills, department);
     }
 }

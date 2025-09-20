@@ -4,7 +4,7 @@ import java.util.*;
 
 public class NearestSmallerLeft {
     public static void main(String[] args) {
-        int[] arr = {4, 5, 2, 10, 8};
+        int[] arr = {1, 5, 2, 10, 8};
         int n = arr.length;
         int[] ans = new int[n];
 

@@ -51,6 +51,9 @@ public class LongestSubString {
                     }
                     i++;
                 }
+                if(charMap.size() == k){
+                    max = Math.max(max,j-i+1);
+                }
                 j++;
             }
         }

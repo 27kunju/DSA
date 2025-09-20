@@ -4,7 +4,7 @@ import java.util.*;
 
 public class NextGreatest {
     public static void main(String[] args) {
-        int[] arr = {1, 3, 2, 4};
+        int[] arr = {1, 3, 5, 4};
         int n = arr.length;
         int[] ans = new int[n];
 
