@@ -10,6 +10,8 @@ public class minDepthMain {
             return 0;
 
         Queue<TreeNode> queue = new LinkedList<>();
+
+
         queue.offer(root);
         int depth =1;
 
