@@ -1,15 +1,5 @@
 package LinkedList;
 
-class myNode {
-    int data;
-    myNode next;
-
-    public myNode(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-
 class customLLImpl {
     private myNode head = null;
     private int size = 0;

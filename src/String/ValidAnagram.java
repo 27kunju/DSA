@@ -1,12 +1,18 @@
 package String;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class ValidAnagram {
     public static void main(String[] args) {
         String s = "anagram", t = "nagaram";
 
         System.out.println(isValidAnangram(s,t));
+
+        List<String> sts = new ArrayList<>();
+
+
 
     }
 
