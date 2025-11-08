@@ -15,7 +15,7 @@ public class AllocatePages {
                 pageSum += arr[i];
             }
         }
-        return true;
+        return studentCount<=m;
     }
 
     public static int allocateBooks(int[] arr, int n, int m) {

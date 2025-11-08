@@ -27,13 +27,32 @@ public class MaxInBitonicArray {
         return -1; // should never happen
     }
 
+    public static int findMax2(int[] nums){
+        int l = 0;
+        int r = nums.length -1;
+
+        while(l<r){
+            int mid = l+(r-l)/2;
+
+            if(nums[mid]  < nums[mid+1]){
+               l = mid+1;
+            }else{
+                r = mid;
+            }
+        }
+
+        return nums[l];
+    }
+
+
+
     public static void main(String[] args) {
         int[] arr1 = {1, 3, 8, 12, 4, 2};
-        int[] arr2 = {1,2,3,4,5,6,7};
+        int[] arr2 = {8,7,5,4,3,2,1};
 
         //bitonic array is monotonically increaseing and decreasing
 
         System.out.println("Max in arr1: " + findMax(arr1)); // 12
-        System.out.println("Max in arr2: " + findMax(arr2)); // 20
+        System.out.println("Max in arr2: " + findMax2(arr2));
     }
 }

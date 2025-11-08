@@ -43,6 +43,21 @@ public class PeakElement {
         return -1;
     }
 
+    public static int findOnePeak2(int[] nums){
+        int l = 0;
+        int r = nums.length -1;
+        while(l<r){
+            int mid = l+(r-l)/2;
+            if(nums[mid]>nums[mid+1]){
+                r = mid;
+            }else{
+                l = mid+1;
+            }
+        }
+
+        return nums[l];
+    }
+
 
 
     // O(n) - finds all peaks
@@ -67,8 +82,8 @@ public class PeakElement {
         int[] arr3 = {1};
 
 
-        System.out.println("One peak in arr1: " + findOnePeak(arr3));
-        System.out.println("One peak in arr2: " + findOnePeak(arr2));
+        System.out.println("One peak in arr1: " + findOnePeak2(arr1));
+        System.out.println("One peak in arr2: " + findOnePeak2(arr2));
 
         System.out.println("All peaks in arr1: " + findAllPeaks(arr1));
         System.out.println("All peaks in arr2: " + findAllPeaks(arr2));

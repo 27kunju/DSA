@@ -49,10 +49,6 @@ public class RotationCount {
             } else if (nums[mid] < nums[high]) {
                 // Minimum is in the left half including mid
                 high = mid;
-            } else {
-                // nums[mid] == nums[high], cannot decide which side
-                // Reduce search space safely
-                high--;
             }
         }
 
@@ -63,6 +59,8 @@ public class RotationCount {
     public static void main(String[] args) {
         int[] arr = {15, 18, 2, 3, 6, 12};
         int rotations = countRotations(arr);
+
         System.out.println("Array is rotated " + rotations + " times");
+        System.out.println(findMin(arr));
     }
 }
