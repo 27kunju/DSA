@@ -2,9 +2,9 @@ package Stack;
 
 import java.util.*;
 
-public class NextGreatest {
+public class NextGreatestRight {
     public static void main(String[] args) {
-        int[] arr = {4,5,2,10,8};
+        int[] arr = {4,3,2,1,6,10,8};
         int n = arr.length;
         int[] ans = new int[n];
 
