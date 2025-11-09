@@ -11,6 +11,17 @@ public class CustomStack {
       1.reference the object
       2. call constructor
      */
+    /*
+   Default constructor notes:
+
+   1. Calls `this(DEFAULT_SIZE)` to delegate to the main constructor.
+   2. Ensures array initialization happens only in one place
+      (inside CustomStack(int size)).
+   3. Avoids duplicating code for creating the internal `data` array.
+   4. Allows creating a stack without specifying size; uses DEFAULT_SIZE = 10.
+   5. Effectively results in: data = new int[10];
+*/
+
     public CustomStack(){
         this(DEFAULT_SIZE);
     }
