@@ -54,3 +54,20 @@ public class MaximumAreaHistogram {
     }
 }
 
+
+/*
+
+
+    Time Complexity Reasoning (O(n × m))
+
+1. Updating the heights array per row → O(m)
+Each row updates all m columns once. Across n rows → O(nm).
+
+2. Maximum Area Histogram (MAH) per row → O(m)
+NSL + NSR + area calculation each take linear time because each index is pushed/popped at most once.
+Across n rows → O(nm).
+
+3. Total Work = O(nm) + O(nm) = O(nm)
+All operations are linear per row; no nested multiplication beyond n × m.
+ */
+

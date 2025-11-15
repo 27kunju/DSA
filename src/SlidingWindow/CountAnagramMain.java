@@ -3,6 +3,50 @@ package SlidingWindow;
 import java.util.*;
 
 public class CountAnagramMain {
+
+    public static int countAnagrams2(String text, String pat){
+        int[] freq = new int[256];
+        int count = 0;
+
+        // Build freq array and count unique chars
+        for (char ch : pat.toCharArray()) {
+            if (freq[ch] == 0) count++;
+            freq[ch]++;
+        }
+
+        int i = 0, j = 0;
+        int k = pat.length();
+        int ans = 0;
+
+        while (j < text.length()) {
+            // Current char processed
+            char ch = text.charAt(j);
+            freq[ch]--;
+
+            // If frequency becomes zero → matched one unique character
+            if (freq[ch] == 0) count--;
+
+            // Window size not reached
+            if (j - i + 1 < k) {
+                j++;
+            }
+            // Window size reached
+            else if (j - i + 1 == k) {
+                if (count == 0) ans++; // Perfect match → anagram
+
+                // Before sliding the window, restore freq for outgoing char
+                char out = text.charAt(i);
+                if (freq[out] == 0) count++;  // we are reintroducing an unmatched char
+                freq[out]++;
+
+                i++;
+                j++;
+            }
+        }
+
+        return ans;
+    }
+
     public static int countAnagrams(String txt, String pat) {
         Map<Character, Integer> map = new HashMap<>();
 

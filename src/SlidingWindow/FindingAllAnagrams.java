@@ -2,11 +2,12 @@ package SlidingWindow;
 
 import java.util.*;
 
-public class FindingAnagrams {
+public class FindingAllAnagrams {
     public static void main(String[] args) {
 
-        String s = "cbaebabacd", p = "abc";
-        System.out.println(findAnagrams2(s,p));
+        String text = "forxxorfxdofr";
+        String pat = "for";
+        System.out.println(findAnagrams(text,pat));
 
     }
 
