@@ -2,7 +2,7 @@ package Arrays;
 
 public class mergeSortedArray {
     public static void main(String[] args) {
-        int[] nums1 = {1,2,3,4,8,0,0,0};
+        int[] nums1 = {1,2,3,4,8};
         int[] nums2 = {5,6,7};
 
         // Count how many actual (non-zero) elements nums1 has

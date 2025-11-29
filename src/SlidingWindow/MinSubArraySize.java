@@ -5,7 +5,7 @@ public class MinSubArraySize {
         int[] arr = {5,3,2,5,10,7,4,9,2,8};
         int target = 15;
 
-        int min = findMinSubArray(arr, target);
+        int min = minSubArrayLen(target,arr);
         System.out.println(min);
     }
     public static int findMinSubArray(int[] arr, int target) {
@@ -36,7 +36,7 @@ public class MinSubArraySize {
 
     }
 
-    public int minSubArrayLen(int target, int[] nums) {
+    public static int minSubArrayLen(int target, int[] nums) {
         int n = nums.length;
         int j = 0, i = 0;
         int min = Integer.MAX_VALUE;

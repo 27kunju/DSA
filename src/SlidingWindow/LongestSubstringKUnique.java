@@ -4,7 +4,7 @@ import java.util.*;
 
 public class LongestSubstringKUnique {
     public static void main(String[] args) {
-        String s = "aabaabaa";
+        String s = "aabaabac";
         int k = 2;
         int res = longestKUniqueSubstring(s, k);
         System.out.println("Longest substring length = " + res);
