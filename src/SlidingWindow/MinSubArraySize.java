@@ -49,6 +49,7 @@ public class MinSubArraySize {
             } else {
                 while (sum >= target) {
                     min = Math.min(j - i + 1, min);
+                    // we are removing elements because we want min length which satisfy the condition
                     sum -= nums[i];
                     i++;
                 }
