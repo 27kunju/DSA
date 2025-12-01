@@ -1,6 +1,8 @@
 package SlidingWindow;
 
 public class CountSubarrays {
+
+    //lc -2962
     public long countSubarrays(int[] nums, int k) {
         int n = nums.length;
 
