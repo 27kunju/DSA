@@ -11,12 +11,12 @@ public class EmployeeOperation {
         List<String> skills = List.of("Java", "Javascript", "DSA", "Springboot");
         List<String> skills2 = List.of("React", "Javascript");
         List<String> skills3 = List.of("Communication");
-        Employee em1 = new Employee(1L, "Ashwini", 25000.0, d1, skills);
-        Employee em2 = new Employee(2L, "Gokul", 30000.0, d1, skills);
-        Employee em3 = new Employee(3L, "Ammu", 10000.0, d3,skills3);
-        Employee em4 = new Employee(5L, "kavya", 20000.0 , d3, skills3);
-        Employee em5 = new Employee(4L,"Tanu", 40000.0, d2, skills2);
-        Employee em6 = new Employee(5L, "Madhu", 25000.0, d2, skills2);
+        Employee em1 = new Employee(1L, "Ashwini", 25000.0, d1, skills,27);
+        Employee em2 = new Employee(2L, "Gokul", 30000.0, d1, skills,27);
+        Employee em3 = new Employee(3L, "Ammu", 10000.0, d3,skills3,20);
+        Employee em4 = new Employee(5L, "kavya", 20000.0 , d3, skills3,28);
+        Employee em5 = new Employee(4L,"Tanu", 40000.0, d2, skills2,28);
+        Employee em6 = new Employee(5L, "Madhu", 25000.0, d2, skills2,28);
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(em1);
@@ -25,6 +25,14 @@ public class EmployeeOperation {
         employeeList.add(em4);
         employeeList.add(em5);
         employeeList.add(em6);
+
+        List<Employee> sortingByNameAndAge = employeeList.stream()
+                .sorted(
+                        Comparator.comparing(Employee::getName)
+                                .thenComparing(Employee::getAge)
+                )
+                .toList();
+
 
         //Average salary
         Map<String, Double> avrSalary = employeeList.stream().collect(Collectors.groupingBy(e -> e.getDepartment().getName(), Collectors.averagingDouble(Employee::getSalary)));

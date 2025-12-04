@@ -11,16 +11,19 @@ public class Employee {
 
     private Double salary;
 
+    private int age;
+
     private List<String> skills;
 
     private Department department;
 
-    public Employee(Long id , String name , Double salary, Department department, List<String> skills){
+    public Employee(Long id , String name , Double salary, Department department, List<String> skills, int age){
         this.id = id;
         this.name = name;
         this.salary = salary;
         this.department = department;
         this.skills = skills;
+        this.age = age;
     }
 
     public Department getDepartment() {
@@ -55,6 +58,14 @@ public class Employee {
         return skills;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void setSkills(List<String> skills) {
         this.skills = skills;
     }
@@ -78,11 +89,15 @@ public class Employee {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id) && Objects.equals(name, employee.name) && Objects.equals(salary, employee.salary) && Objects.equals(skills, employee.skills) && Objects.equals(department, employee.department);
+        return Objects.equals(id, employee.id) && Objects.equals(name, employee.name)
+                && Objects.equals(salary, employee.salary)
+                && Objects.equals(skills, employee.skills)
+                && Objects.equals(department, employee.department)
+                && Objects.equals(age, employee.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, salary, skills, department);
+        return Objects.hash(id, name, salary, skills, department,age);
     }
 }

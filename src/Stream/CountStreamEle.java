@@ -10,6 +10,7 @@ public class CountStreamEle {
 
         Map<String , Long> mapData = words.stream().collect(Collectors.groupingBy(e ->e , Collectors.counting()));
 
+
         System.out.println(mapData);
 
     }

@@ -11,7 +11,7 @@ class construtorTest{
         id = 12L;
     }
 
-    public class constructorTestMain {
+    public static class constructorTestMain {
 
         public static void main(String[] args) {
 

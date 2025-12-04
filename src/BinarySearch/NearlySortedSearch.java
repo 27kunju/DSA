@@ -1,5 +1,9 @@
 package BinarySearch;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class NearlySortedSearch {
 
     public static int searchNearlySorted(int[] arr, int target) {
@@ -34,8 +38,6 @@ public class NearlySortedSearch {
     public static void main(String[] args) {
         int[] arr = {10, 3, 40, 20, 50, 80, 70};
         int target = 40;
-
-
         //the element which supposed to be in ith position can be present in i, or i+1, i-1
         int index = searchNearlySorted(arr, target);
         System.out.println("Element " + target + " found at index: " + index);
