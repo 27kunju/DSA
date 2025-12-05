@@ -33,7 +33,6 @@ public class EmployeeOperation {
                 )
                 .toList();
 
-
         //Average salary
         Map<String, Double> avrSalary = employeeList.stream().collect(Collectors.groupingBy(e -> e.getDepartment().getName(), Collectors.averagingDouble(Employee::getSalary)));
         System.out.println(avrSalary + " ");
