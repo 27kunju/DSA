@@ -22,6 +22,8 @@ public class niceSubArray1248{
 
         return count;
     }
+
+    //Approach-2 (Sliding Window Khandani Template with a slight twist)
     public int numberOfSubarrays2(int[] nums, int k) {
         int n = nums.length;
 
