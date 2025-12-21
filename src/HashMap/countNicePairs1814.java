@@ -1,4 +1,4 @@
-package cumulative_sum;
+package HashMap;
 
 import java.util.HashMap;
 import java.util.Map;

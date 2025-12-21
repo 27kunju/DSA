@@ -3,7 +3,7 @@ package HashMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class continuousSubarray {
+public class continuousSubarray523 {
 
     //brute force
     public boolean checkSubarraySum(int[] nums, int k) {
