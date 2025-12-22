@@ -15,7 +15,7 @@ public class maxSumArraySizeDivisibleByK {
                 sum +=nums[j];
 
                 if(j-i+1 %k == 0){
-                    max = Math.max(max,j-i+1);
+                    max = Math.max(max,sum);
                 }
             }
         }
