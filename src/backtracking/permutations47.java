@@ -5,40 +5,38 @@ import java.util.List;
 import java.util.Arrays;
 
 public class permutations47 {
-    List<List<Integer>> result = new ArrayList<>();
-    boolean[] used;
+    public List<List<Integer>> permuteUnique(int[] nums) {
 
-    private void backtrack(int[] nums, List<Integer> temp) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        Arrays.sort(nums);
 
-        if (temp.size() == nums.length) {
-            result.add(new ArrayList<>(temp));
+        backtrack(resultList, new ArrayList<>(), nums, new boolean[nums.length]);
+        return resultList;
+    }
+
+    private void backtrack(List<List<Integer>> resultList,
+                           ArrayList<Integer> tempList, int[] nums, boolean[] used) {
+        // If we match the length, it is a permutation
+        if (tempList.size() == nums.length
+                && !resultList.contains(tempList)) {
+            resultList.add(new ArrayList<>(tempList));
             return;
         }
 
         for (int i = 0; i < nums.length; i++) {
-
+            // Skip if we get same element
             if (used[i]) continue;
 
-            // skip duplicates
-            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])
-                continue;
-
+            // Add the new element and mark it as used
             used[i] = true;
-            temp.add(nums[i]);
+            tempList.add(nums[i]);
 
-            backtrack(nums, temp);
+            // Go back to try other element
+            backtrack(resultList, tempList, nums, used);
 
-            temp.remove(temp.size() - 1);
+            // Remove the element and mark it as unused
             used[i] = false;
+            tempList.removeLast();
         }
-    }
-
-    public List<List<Integer>> permuteUnique(int[] nums) {
-
-        Arrays.sort(nums);        // required for duplicate handling
-        used = new boolean[nums.length];
-
-        backtrack(nums, new ArrayList<>());
-        return result;
     }
 }
