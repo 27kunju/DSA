@@ -2,6 +2,7 @@ package Stream;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class CountStreamEle {
@@ -10,6 +11,14 @@ public class CountStreamEle {
 
         Map<String , Long> mapData = words.stream().collect(Collectors.groupingBy(e ->e , Collectors.counting()));
         System.out.println(mapData);
+
+
+        // stream has count() method
+        List<String> fruits = List.of("Apple", "banana", "Avacodo");
+
+        Long count = fruits.stream().filter(s -> s.startsWith("A")).count();
+        System.out.println(count);
+
 
     }
 }
