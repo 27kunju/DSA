@@ -11,6 +11,7 @@ public class mapToIntExample {
         System.out.println(nums.stream().mapToInt(Integer::intValue).sum());
         System.out.println(nums.stream().mapToInt(Integer::intValue).max().getAsInt());
         System.out.println(nums.stream().mapToInt(Integer::intValue).min().getAsInt());
+        System.out.println(nums.stream().mapToInt(Integer::intValue).average().getAsDouble());
     }
 
 }

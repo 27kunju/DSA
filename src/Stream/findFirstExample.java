@@ -12,5 +12,7 @@ public class findFirstExample {
         System.out.println(names.stream().findFirst().get());
 
         System.out.println(names.stream().findAny().get());
+
+        System.out.println(names.stream().allMatch(s ->s.length()>3));
     }
 }
