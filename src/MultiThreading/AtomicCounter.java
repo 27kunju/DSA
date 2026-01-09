@@ -2,7 +2,7 @@ package MultiThreading;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class counterExample {
+public class AtomicCounter {
 //    private static int counter = 0;
 
    static AtomicInteger counter = new AtomicInteger(0);
