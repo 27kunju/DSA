@@ -56,3 +56,32 @@ public class NotesToMap {
         System.out.println(sortedResult);
     }
 }
+
+
+/*
+
+
+     Java Source Code (.java)
+        ↓
+     Java Compiler (javac)
+        ↓
+     Bytecode (.class)   ← Platform Independent
+        ↓
+     JVM (OS + CPU specific)
+        ↓
+     Native Machine Code
+
+
+
+
+
+     C++ Source Code (.cpp)
+        ↓
+     C++ Compiler
+        ↓
+     Native Machine Code (.exe / binary)
+        ↓
+     OS + CPU
+
+
+ */
