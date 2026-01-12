@@ -1,5 +1,7 @@
 package HashMap;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 class Node<K, V> {
@@ -32,27 +34,44 @@ s
 
  */
 
-public class MyHashMap<K, V> {
+
+public class MyHashMap<K, V> implements Iterable<K> {
 
     private static final int DEFAULT_CAPACITY = 16;
-    private Node<K, V>[] table;
-
     private static final float LOAD_FACTOR = 0.75f;
-    private int size = 0;
-    private int threshold = (int) (DEFAULT_CAPACITY * LOAD_FACTOR);
 
+    private Node<K, V>[] table;
+    private int size;
+    private int threshold;
 
     @SuppressWarnings("unchecked")
     public MyHashMap() {
         table = new Node[DEFAULT_CAPACITY];
+        threshold = (int) (DEFAULT_CAPACITY * LOAD_FACTOR);
     }
 
+    // ---------- NODE ----------
+    static class Node<K, V> {
+        final int hash;
+        final K key;
+        V value;
+        Node<K, V> next;
+
+        Node(int hash, K key, V value, Node<K, V> next) {
+            this.hash = hash;
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    // ---------- HASH ----------
     private int hash(K key) {
         return key == null ? 0 : key.hashCode();
     }
 
-    // -------- PUT --------
-    public void put(K key, V value) {
+    // ---------- PUT ----------
+    public V put(K key, V value) {
         int hash = hash(key);
         int index = (table.length - 1) & hash;
 
@@ -61,35 +80,36 @@ public class MyHashMap<K, V> {
         if (head == null) {
             table[index] = new Node<>(hash, key, value, null);
             size++;
-        } else {
-            Node<K, V> current = head;
-            while (true) {
-                if (Objects.equals(current.key, key)) {
-                    current.value = value;
-                    return;
-                }
-                if (current.next == null) {
-                    current.next = new Node<>(hash, key, value, null);
-                    size++;
-                    break;
-                }
-                current = current.next;
+            return null;
+        }
+
+        Node<K, V> current = head;
+        while (true) {
+            if (Objects.equals(current.key, key)) {
+                V oldValue = current.value;
+                current.value = value;
+                return oldValue;
             }
+            if (current.next == null) {
+                current.next = new Node<>(hash, key, value, null);
+                size++;
+                break;
+            }
+            current = current.next;
         }
 
         if (size > threshold) {
-            //resize();
+            resize();
         }
+        return null;
     }
 
-
-    // -------- GET --------
+    // ---------- GET ----------
     public V get(K key) {
         int hash = hash(key);
-        int index = (DEFAULT_CAPACITY - 1) & hash;
+        int index = (table.length - 1) & hash;
 
         Node<K, V> current = table[index];
-
         while (current != null) {
             if (Objects.equals(current.key, key)) {
                 return current.value;
@@ -99,10 +119,15 @@ public class MyHashMap<K, V> {
         return null;
     }
 
-    // -------- REMOVE --------
+    // ---------- CONTAINS KEY ----------
+    public boolean containsKey(K key) {
+        return get(key) != null;
+    }
+
+    // ---------- REMOVE ----------
     public V remove(K key) {
         int hash = hash(key);
-        int index = (DEFAULT_CAPACITY - 1) & hash;
+        int index = (table.length - 1) & hash;
 
         Node<K, V> current = table[index];
         Node<K, V> prev = null;
@@ -110,16 +135,98 @@ public class MyHashMap<K, V> {
         while (current != null) {
             if (Objects.equals(current.key, key)) {
                 if (prev == null) {
-                    table[index] = current.next; // remove head
+                    table[index] = current.next;
                 } else {
                     prev.next = current.next;
                 }
+                size--;
                 return current.value;
             }
             prev = current;
             current = current.next;
         }
         return null;
+    }
+
+    // ---------- SIZE ----------
+    public int size() {
+        return size;
+    }
+
+    // ---------- CLEAR ----------
+    @SuppressWarnings("unchecked")
+    public void clear() {
+        table = new Node[DEFAULT_CAPACITY];
+        size = 0;
+    }
+
+    // ---------- RESIZE ----------
+    @SuppressWarnings("unchecked")
+    private void resize() {
+        Node<K, V>[] oldTable = table;
+        int newCapacity = oldTable.length * 2;
+        table = new Node[newCapacity];
+        threshold = (int) (newCapacity * LOAD_FACTOR);
+        size = 0;
+
+        for (Node<K, V> head : oldTable) {
+            while (head != null) {
+                put(head.key, head.value);
+                head = head.next;
+            }
+        }
+    }
+
+    // ---------- ITERATOR ----------
+    @Override
+    public Iterator<K> iterator() {
+        return new KeyIterator();
+    }
+
+    public Iterator<K> keyIterator() {
+        return iterator();
+    }
+
+    private class KeyIterator implements Iterator<K> {
+
+        int bucketIndex = 0;
+        Node<K, V> current;
+
+        KeyIterator() {
+            advance();
+        }
+
+        private void advance() {
+            while (bucketIndex < table.length && table[bucketIndex] == null) {
+                bucketIndex++;
+            }
+            if (bucketIndex < table.length) {
+                current = table[bucketIndex];
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public K next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            K key = current.key;
+
+            if (current.next != null) {
+                current = current.next;
+            } else {
+                bucketIndex++;
+                current = null;
+                advance();
+            }
+            return key;
+        }
     }
 }
 

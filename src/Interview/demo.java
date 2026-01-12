@@ -1,19 +1,11 @@
 package Interview;
 
+public  class demo {
+    public static void main(String[] args) {
+        String s = new String("123");
 
-class Person {
-    Person(String name) {
-        System.out.println("Person name: " + name);
+
     }
-}
-
-class Employee extends Person {
-    Employee(String name, int id) {
-        super(name); // Calls parent constructor
-        System.out.println("Employee ID: " + id);
-    }
-}
 
 
-public class demo {
 }
