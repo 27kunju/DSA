@@ -6,6 +6,9 @@ import java.util.TreeSet;
 
 public class treeSetExample {
     public static void main(String[] args) {
+
+
+
         // Create a Comparator that sorts strings by length
         Comparator<String> lengthComparator = new Comparator<String>() {
             @Override

@@ -1,5 +1,6 @@
 package Stream;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Department {
@@ -8,9 +9,12 @@ public class Department {
 
     private String name;
 
+    private final int maxStudents = 100;
+
     public Department(Long id, String name){
         this.id = id;
         this.name = name;
+
     }
 
     public Long getId() {
