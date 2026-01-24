@@ -62,6 +62,13 @@ public class MergeSortedArrays {
         int i = m - 1;
         int j = n - 1;
 
+
+        /*
+
+        Using || allows the loop to continue even when one pointer is already exhausted.
+        The code still tries to access nums1[i] or nums2[j].
+        If i or j becomes -1, it results in an ArrayIndexOutOfBoundsException.
+         */
         while (i >= 0 && j >= 0) {
             if (nums1[i] > nums2[j]) {
                 nums1[k--] = nums1[i--];

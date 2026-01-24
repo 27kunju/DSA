@@ -1,39 +1,33 @@
 package Arrays;
 
 public class PlusOne {
+
     public static void main(String[] args) {
-        int[] arr = {9,8,7,6,5,4,3,2,1,1};
-        int digit = getDigit(arr);
-        int[] plusarr = getArrPlus(digit);
-        System.out.println(digit);
-        for(int x : plusarr){
-            System.out.println(x);
+
+        int[] digits = {9, 8, 7, 6, 5, 4, 3, 2, 1, 1};
+
+        int[] result = plusOne(digits);
+
+        for (int x : result) {
+            System.out.print(x + " ");
         }
     }
 
-    public static int getDigit(int[] arr){
+    public static int[] plusOne(int[] digits) {
 
-        int num  =0;
-        for(int i = 0; i< arr.length ; i++){
-            num = num*10 + arr[i];
+        for (int i = digits.length - 1; i >= 0; i--) {
+
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+
+            digits[i] = 0;
         }
 
-        return num;
-    }
-
-    public static int[] getArrPlus(int digit){
-        int count = 0;
-        int temp = digit;
-        while(temp > 0){
-            temp = temp /10;
-            count++;
-        }
-        int[] arr = new int[count];
-
-        for(int i = count -1 ; i>=0 ; i--){
-            arr[i] = digit %10;
-            digit = digit/10;
-        }
-        return arr;
+        // case when all digits are 9
+        int[] result = new int[digits.length + 1];
+        result[0] = 1;
+        return result;
     }
 }

@@ -21,4 +21,24 @@ public class MoveAllZeroesFront {
             System.out.println(x);
         }
     }
+
+    public static void moveZeros(int[] nums){
+        int i =  nums.length -1;
+        int j = nums.length -1;
+
+        while(j>=0){
+            if(nums[j] !=0){
+                nums[i] =nums[j];
+                i--;
+            }
+
+            j--;
+        }
+
+        while(i>=0){
+            nums[i] = 0;
+            i--;
+        }
+
+    }
 }

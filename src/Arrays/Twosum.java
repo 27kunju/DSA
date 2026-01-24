@@ -1,8 +1,6 @@
 package Arrays;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Twosum {
     public static void main(String[] args) {
@@ -38,5 +36,52 @@ public class Twosum {
 
         return new int[]{};
 
+    }
+
+    //when array is sorted - use 2 pointers
+
+    public static int[] twoSum3(int[] nums, int target){
+        int i = 0, j= nums.length-1;
+
+        while(i<j){
+            int sum = nums[i]+nums[j];
+
+            if(sum <target){
+                i++;
+            }else if(sum >target){
+                j--;
+            }else if(sum == target){
+                return new int[]{i,j};
+            }
+        }
+
+        return new int[]{};
+    }
+
+    //when more than one solution is there
+    public static List<int[]> twoSum4(int[] nums, int target){
+        List<int[]> result = new ArrayList<>();
+
+        int i = 0,j = nums.length-1;
+        while(i<j){
+            int sum = nums[i]+nums[j];
+            if(sum==target){
+                result.add(new int[]{i,j});
+
+
+                while(i<j && nums[i] == nums[i]) i++;
+                while(i<j && nums[j] == nums[j-1]) i--;
+
+                i++;
+                j--;
+
+            }else if(sum <target){
+                i++;
+            }else if(sum>target){
+                j--;
+            }
+        }
+
+        return result;
     }
 }
