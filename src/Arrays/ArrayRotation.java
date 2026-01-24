@@ -13,6 +13,17 @@ public class ArrayRotation {
 
         int k = 2;
 
+        /*
+
+         When we say “left rotate by k”: Each element moves k positions to the left
+         Rotating by k positions = shifting the array left k times = moving k elements
+
+         what does it mean k = 8, n = 5
+         Left rotation by 8 positions = left rotation by 3 positions
+         Because: Rotating by 5 brings the array back to the same state
+                  Extra rotations beyond n are redundant
+         */
+
         //left rotate by 1 place
 //        leftRotation(arr, size);
 
@@ -88,9 +99,9 @@ public class ArrayRotation {
             temp[i] = arr[(size-k)+i];
         }
 
-        //shifting the remaining elements to end
-        for(int i = k ; i>=0; i--){
-            arr[i+k] = arr[i];
+        // shift remaining elements to the right
+        for (int i = size - k - 1; i >= 0; i--) {
+            arr[i + k] = arr[i];
         }
 
         //copy temp elements back to array
