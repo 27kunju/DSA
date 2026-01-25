@@ -15,6 +15,8 @@ public class FloorInSortedArray {
                 high = mid -1;
 
             } else {
+                //here we want the smallest in the largest side of the array
+
                 ans = arr[mid];  // potential floor
                 low = mid + 1;
             }
@@ -23,8 +25,8 @@ public class FloorInSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 4,8, 10, 10, 12, 19};
-        int x = 5;
+        int[] arr = {1, 2, 4,8, 10, 12, 19};
+        int x = 7;
 
         int floor = findFloor(arr, x);
         System.out.println("Floor of " + x + " is: " + floor);

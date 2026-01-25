@@ -32,41 +32,40 @@ public class ReverseWords {
     }
 
     public String reverseWords2(String s) {
-        // 1. Convert to char array
         char[] arr = s.toCharArray();
         int n = arr.length;
 
-        // 2. Reverse entire string
+        // Reverse entire array
         reverse(arr, 0, n - 1);
 
-        int i = 0, l = 0, r = 0;
+        int start = 0; // write pointer & start of word
+        int i = 0;
 
         while (i < n) {
-            // skip spaces
+            // Skip spaces
             while (i < n && arr[i] == ' ') i++;
 
             if (i >= n) break;
 
-            // write non-space characters
+            int wordStart = start;
+
+            // Copy word
             while (i < n && arr[i] != ' ') {
-                arr[r++] = arr[i++];
+                arr[start++] = arr[i++];
             }
 
-            // reverse the word from l..r-1
-            reverse(arr, l, r - 1);
+            // Reverse the word
+            reverse(arr, wordStart, start - 1);
 
-            // add a space after the word
-            arr[r++] = ' ';
-
-            l = r;
+            // Add single space if there is more to come
+            if (i < n) arr[start++] = ' ';
         }
 
-        // remove trailing space
-        if (r > 0) r--;
+        // Remove trailing space if any
+        if (start > 0 && arr[start - 1] == ' ') start--;
 
-        return new String(arr, 0, r);
+        return new String(arr, 0, start);
     }
-
     private void reverse(char[] arr, int l, int r) {
         while (l < r) {
             char temp = arr[l];

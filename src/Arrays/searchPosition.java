@@ -1,5 +1,10 @@
 package Arrays;
 
+
+/*
+
+Clarify → plan → code → explain → dry run → edge cases → complexity
+ */
 public class searchPosition {
     public static void main(String[] args) {
         int[] nums = {1,3,5,6};
@@ -36,6 +41,16 @@ public class searchPosition {
                 low = mid+1;
             }
         }
+
+        /*
+
+        At the end of binary search, low points to the first index where nums[i] >= target.
+
+       If target is smaller than the first element, low stays at 0 → insert at start.
+
+       If target is larger than all elements, low moves past the last index → insert at end.
+       That’s why returning low always gives the correct insertion index
+         */
 
         return low;
     }

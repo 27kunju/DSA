@@ -11,6 +11,7 @@ public class CeilInSortedArray {
             if (arr[mid] == x) {
                 return arr[mid]; // exact match is the ceil
             } else if (x < arr[mid]) {
+                //here we want largest from the smallest size of the array
                 ans = arr[mid];  // potential ceil
                 high = mid - 1;
             } else {
