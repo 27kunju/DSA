@@ -24,7 +24,7 @@ public class ProducerConsumerExample {
                     buffer.add(i);
                     System.out.println("Produced "+i);
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -48,7 +48,7 @@ public class ProducerConsumerExample {
                     int val = buffer.remove();
                     System.out.println("Consumed "+val);
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(150);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }

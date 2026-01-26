@@ -2,6 +2,7 @@ package BinarySearch;
 
 public class NextAlphabeticalElement {
 
+    // this is  similar to finding ceiling
     public static char nextLetter(char[] arr, char x) {
         int low = 0, high = arr.length - 1;
         char ans = '#'; // placeholder if not found

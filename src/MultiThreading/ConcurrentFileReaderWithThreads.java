@@ -8,8 +8,8 @@ public class ConcurrentFileReaderWithThreads {
 
     public static void main(String[] args) {
 
-        String filePath1 = "file1.txt";
-        String filePath2 = "file2.txt";
+        String filePath1 = "C://Users//rashwin//Documents//DSA//src//MultiThreading//file1.txt";
+        String filePath2 = "C://Users//rashwin//Documents//DSA//src//MultiThreading//file2.txt";
 
         Thread file1Thread = new Thread(() -> readFile(filePath1), "File-1-Thread");
         Thread file2Thread = new Thread(() -> readFile(filePath2), "File-2-Thread");
