@@ -13,12 +13,15 @@ class PrefixEval {
             } else {
                 int a = st.pop();
                 int b = st.pop();
-                switch(c){
-                    case '+': st.push(a+b); break;
-                    case '-': st.push(a-b); break;
-                    case '*': st.push(a*b); break;
-                    case '/': st.push(a/b); break;
-                }
+               int result = switch (c){
+                   case '+' -> a+b;
+                   case '-' -> a-b;
+                   case '*' -> a*b;
+                   case '/' -> a/b;
+                   default -> throw new IllegalStateException("Unexpected value: " + c);
+               };
+
+               st.push(result);
             }
         }
         return st.pop();
