@@ -1,5 +1,18 @@
 package BinarySearch;
 
+
+/*
+
+Your understanding (refined & correct ✅)
+
+Worst case speed = 1 banana/hour
+→ Koko takes maximum time
+→ That time = sum of all piles
+
+Best (fastest) needed speed
+→ Eat the largest pile in 1 hour
+→ Speed = max(piles)
+ */
 public class cocoEatingBanana {
     public boolean canEatAll(int[] piles, int h, int speed) {
         long hours = 0;

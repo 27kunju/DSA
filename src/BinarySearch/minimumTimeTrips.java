@@ -6,18 +6,20 @@ public class minimumTimeTrips {
     public long minimumTime(int[] time, int totalTrips) {
         long left = 1;
         long right = (long) Arrays.stream(time).min().getAsInt() * totalTrips;
+        long ans = 0;
 
-        while (left < right) {
+        while (left <= right) {
             long mid = left + (right - left) / 2;
 
             if (possible(time, mid, totalTrips)) {
-                right = mid;
+                ans = mid;
+                right = mid-1;
             } else {
                 left = mid + 1;
             }
         }
 
-        return left;
+        return ans;
     }
 
     private boolean possible(int[] time, long givenTime, int totalTrips) {
