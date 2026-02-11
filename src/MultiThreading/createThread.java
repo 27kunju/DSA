@@ -12,7 +12,8 @@ package MultiThreading;
 public class createThread{
     public static void main(String[] args) {
         customThread t1 = new customThread();
-        t1.start(); // create a new thread
+        t1.start();
+        t1.start();// create a new thread
 
         customThread t2 = new customThread();
         t2.start();;
