@@ -11,20 +11,22 @@ public class SquareRoot {
             return n;
         }
 
-        int low = 1, high = n, ans = 0;
+        int l = 1, h = n/2, ans = 0;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            long sq = (long) mid * mid;
 
-            if (mid <= n / mid) { // mid*mid <= n (avoids overflow)
+            if (sq == n) {
+                return mid;
+            } else if (sq < n) {
                 ans = mid;
-                low = mid + 1;
+                l = mid + 1;
             } else {
-                high = mid - 1;
+                h = mid - 1;
             }
         }
-
-        return ans; // integer part of square root
+        return ans;
     }
 
     public static void main(String[] args) {

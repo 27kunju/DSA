@@ -12,11 +12,12 @@ public class ArrayDeletion {
 
         int size = 5;
         int k = 3;
-        size = deleteAtPostion2(arr, size, k);
+        printArray(arr, size);
+        size = deleteAtPosition(arr, size, k);
         System.out.println("Delete at position:" + k );
         printArray(arr, size);
 
-        //delete at end
+//        delete at end
 //        size = deleteAtEnd(arr, size);
 //        System.out.println("Delete at end");
 //        printArray(arr, size);
@@ -63,24 +64,24 @@ public class ArrayDeletion {
         return --size;
     }
 
-    public static int deleteAtPostion2(int[] arr, int size, int k){
-
-        if (k < 0 || k >= size) {
-            System.out.println("Invalid position");
-            return size;
-        }
-
-        //if we had used for(int i = k;i<size;i++)
-        //when == size - 1, which causes access to arr[size].
-        // Since Java arrays are 0-indexed, this results in an ArrayIndexOutOfBoundsException.
-        // The loop should run until i < size - 1.
-
-        for (int i = k; i < size - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
-
-        return size - 1;
-    }
+//    public static int deleteAtPostion2(int[] arr, int size, int k){
+//
+//        if (k < 0 || k >= size) {
+//            System.out.println("Invalid position");
+//            return size;
+//        }
+//
+//        //if we had used for(int i = k;i<size;i++)
+//        //when == size - 1, which causes access to arr[size].
+//        // Since Java arrays are 0-indexed, this results in an ArrayIndexOutOfBoundsException.
+//        // The loop should run until i < size - 1.
+//
+//        for (int i = k; i < size - 1; i++) {
+//            arr[i] = arr[i + 1];
+//        }
+//
+//        return size - 1;
+//    }
 
     public static void printArray(int[] arr, int size){
         for(int i = 0; i<size; i++){

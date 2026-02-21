@@ -36,6 +36,12 @@ public class ArrayInsertion {
             return size;
         }
         arr[size] = value;
+        /*
+        if we would used return size++;
+        This would:
+        Return the old size
+        Increment happens after return
+         */
         return ++size;
     }
 
