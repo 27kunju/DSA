@@ -1,24 +1,22 @@
 package BinarySearch;
 
 public class NumOfBouquets {
-    private boolean canMake(int[] bloomDay, int day, int k, int target) {
-        int consecutive = 0;
+    public boolean canMake(int[] bloomDay, int day, int k, int m) {
         int bouquets = 0;
+        int flowers = 0;
 
-        for (int bd : bloomDay) {
-            if (bd <= day) {
-                consecutive++;
-                if (consecutive == k) {
+        for (int bloom : bloomDay) {
+            if (bloom <= day) {
+                flowers++;
+                if (flowers == k) {
                     bouquets++;
-                    if (bouquets == target) return true; // early success
-                    consecutive = 0;
+                    flowers = 0;
                 }
             } else {
-                consecutive = 0;
+                flowers = 0;
             }
         }
-
-        return false;
+        return bouquets >= m;
     }
 
     public int minDays(int[] bloomDay, int m, int k) {

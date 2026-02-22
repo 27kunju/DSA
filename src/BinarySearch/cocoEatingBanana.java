@@ -12,10 +12,30 @@ Worst case speed = 1 banana/hour
 Best (fastest) needed speed
 → Eat the largest pile in 1 hour
 → Speed = max(piles)
+
+Koko wants to finish one entire pile in 1 hour
+
+The largest pile determines that speed
+
+If:
+
+max pile = 11
+
+Then:
+
+Speed = 11 → Koko eats that pile in 1 hour
  */
 public class cocoEatingBanana {
     public boolean canEatAll(int[] piles, int h, int speed) {
         long hours = 0;
+               /*
+
+        if mid is 1 ,
+        piles = [805306368, 805306368, 805306368]
+        h = 1_000_000_000
+
+        hours ,total hours can exceed Integer.MAX_VALUE, causing overflow and incorrect binary search decisions; using long fixes this.
+       */
         for (int p : piles) {
             hours += (p + speed - 1) / speed; // ceiling division
         }
