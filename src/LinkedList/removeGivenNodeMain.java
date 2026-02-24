@@ -2,18 +2,21 @@ package LinkedList;
 
 public class removeGivenNodeMain {
 
-    public myNode removeGivenNode(myNode head, int val){
-
+    public myNode removeElements(myNode head, int val) {
         myNode dummy = new myNode(-1);
         dummy.next = head;
 
-        myNode curr = dummy;
+        myNode prev = dummy;
 
-        while(curr.next != null){
-            if(curr.next.data == val){
-                curr.next = curr.next.next;
-            } else{
-                curr = curr.next;
+        while (head != null) {
+            if (head.data == val) {
+                // Skip the current node
+                prev.next = head.next;
+                head = head.next;
+            } else {
+                // Move both pointers forward
+                prev = head;
+                head = head.next;
             }
         }
 
