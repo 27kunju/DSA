@@ -7,7 +7,7 @@ public class RemoveDuplicates {
 
         //works for sorted array
         java.util.Arrays.sort(nums);
-        int newLength = removeDup(nums);
+        int newLength =removeDuplicates(nums);
         System.out.println("After removing duplicates");
         for(int i =0; i<newLength ; i++){
             System.out.println(nums[i]);
@@ -27,18 +27,16 @@ public class RemoveDuplicates {
 
     }
 
-    class Solution {
-        public int removeDuplicates(int[] nums) {
-            int i = 0;
+    public  static int removeDuplicates(int[] nums) {
+        int i = 0;
 
-            for(int j = 1;j<nums.length;j++){
-                if(nums[i] != nums[j])
-                    nums[i+1] = nums[j];
-                    i++;
-            }
-
-            return i+1;
+        for(int j = 1;j<nums.length;j++){
+            if(nums[i] != nums[j])
+                nums[++i] = nums[j];
 
         }
+
+        return i+1;
+
     }
 }
