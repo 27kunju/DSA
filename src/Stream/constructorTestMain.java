@@ -1,23 +1,25 @@
 package Stream;
 
-class construtorTest{
+class construtorTest {
 
     String name;
 
     Long id;
 
-    private construtorTest(){
+   construtorTest() {
         name = "Asjw";
         id = 12L;
     }
+}
 
-    public static class constructorTestMain {
+    public class constructorTestMain {
 
         public static void main(String[] args) {
 
             construtorTest s= new construtorTest();
+
         }
     }
-}
+
 
 
