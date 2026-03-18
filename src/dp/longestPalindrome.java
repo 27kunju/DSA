@@ -3,39 +3,10 @@ package dp;
 import java.util.Arrays;
 
 public class longestPalindrome {
-    public boolean solve(String s, int i, int j) {
-        if (i >= j) {
-            return true;
-        }
-
-        if (s.charAt(i) == s.charAt(j)) {
-            return solve(s, i + 1, j - 1);
-        }
-        return false;
-    }
-
-    public String longestPalindrome(String s) {
-        int n = s.length();
-        int maxLen = 0;
-        int startPoint = 0;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {   // FIXED
-                if (solve(s, i, j)) {
-                    if (j - i + 1 > maxLen) {
-                        maxLen = j - i + 1;
-                        startPoint = i;   // FIXED
-                    }
-                }
-            }
-        }
-
-        return s.substring(startPoint, startPoint + maxLen); // FIXED
-    }
 
     private int[][] t;
 
-    public String longestPalindrome2(String s) {
+    public String LongestPalindrome(String s) {
         int n = s.length();
         int maxlen = Integer.MIN_VALUE;
         int startingIndex = 0;
@@ -56,7 +27,7 @@ public class longestPalindrome {
         return s.substring(startingIndex, startingIndex + maxlen);
     }
 
-    private boolean solve2(String s, int l, int r) {
+    private boolean solve(String s, int l, int r) {
         if (l >= r) {
             return true;
         }
@@ -66,7 +37,7 @@ public class longestPalindrome {
         }
 
         if (s.charAt(l) == s.charAt(r)) {
-            t[l][r] = solve2(s, l + 1, r - 1) ? 1 : 0;
+            t[l][r] = solve(s, l + 1, r - 1) ? 1 : 0;
         } else {
             t[l][r] = 0;
         }

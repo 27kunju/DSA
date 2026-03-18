@@ -25,4 +25,22 @@ public class ReverseString {
 
     }
 
+    void reverseString(String s) {
+        char[] arr = s.toCharArray();  // Convert string to char array
+        int l = 0, r = arr.length - 1;
+
+        while (l < r) {
+            // Swap characters
+            char temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+            l++;
+            r--;
+        }
+
+        // Convert back to string and print
+        String reversed = new String(arr);
+        System.out.println(reversed);
+    }
+
 }

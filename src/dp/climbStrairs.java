@@ -24,5 +24,9 @@ public class climbStrairs {
     1,2,1
     1,1,2
 
+
+    Without DP, we recompute the same steps multiple times. By storing results of smaller steps (like 2, 3, 4),
+     we reuse them and reduce time complexity
+
      */
 }

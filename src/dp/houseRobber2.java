@@ -4,6 +4,8 @@ public class houseRobber2 {
     public int rob(int[] nums) {
         if(nums.length <2) return nums[0];
 
+        //2,3,4,1,5
+
         int[] skipLastHouse = new int[nums.length-1];
         int[] skipFirstHouse = new int[nums.length-1];
 

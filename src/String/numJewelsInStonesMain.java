@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class numJewelsInStonesMain {
     public static void main(String[] args) {
-        String jewels = "aAb", stones = "aAAbbbb";
+        String jewels = "aAb", stones = "aAAbbbbcd";
         int count = numJewelsInStones(jewels , stones);
 
         System.out.println(count);

@@ -1,5 +1,8 @@
 package SlidingWindow;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MaxSubarraySum {
 
     //LC -3381
@@ -52,5 +55,29 @@ public class MaxSubarraySum {
         }
 
         return result;
+    }
+
+    public static long maxSubarraySum2(int[] nums, int k) {
+
+        long sum = 0;
+        long res = Long.MIN_VALUE;
+
+        // remainder -> minimum prefix sum
+        Map<Integer, Long> map = new HashMap<>();
+        map.put(0, 0L);
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            int rem = (i + 1) % k;
+
+            if (map.containsKey(rem)) {
+                res = Math.max(res, sum - map.get(rem));
+            }
+
+            map.put(rem, Math.min(map.getOrDefault(rem, Long.MAX_VALUE), sum));
+        }
+
+        return res;
     }
 }
