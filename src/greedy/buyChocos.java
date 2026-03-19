@@ -8,7 +8,7 @@ public class buyChocos {
 
         int cost = prices[0] + prices[1];
 
-        if (cost <= money) {
+        if (money >= cost) {
             return money - cost;
         }
 

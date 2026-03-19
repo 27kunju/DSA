@@ -16,5 +16,17 @@ public class minCostClimbstair {
 
     }
 
+    /*
+
+    If you take:
+int[] minCost = new int[n]; // size = 3
+
+👉 indices:
+
+0, 1, 2
+
+❌ minCost[3] → ArrayIndexOutOfBoundsException
+     */
+
 
 }

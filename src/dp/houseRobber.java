@@ -16,4 +16,13 @@ public class houseRobber {
         return dp[nums.length -1];
 
     }
+
+    /*
+
+    At each house:
+"Should I take this house or skip it?"
+
+👉 That decision depends on previous computed values
+At each house we decide to rob or skip, and since the same subproblems repeat, we store results using DP to avoid recomputation
+     */
 }

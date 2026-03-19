@@ -3,7 +3,7 @@ package dp;
 import java.util.ArrayList;
 import java.util.*;
 
-public class partitionEqulSubset {
+public class partitionEqualSubset {
     int[][] t = new int[201][20001];
 
     boolean solve(List<Integer> nums, int i, int x) {

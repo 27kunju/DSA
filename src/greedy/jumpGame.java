@@ -14,4 +14,14 @@ public class jumpGame {
 
         return finalPos==0;
     }
+
+    /*
+    idx = starting point
+
++ nums[idx] = steps you take from here
+
+idx + nums[idx] = the actual index you land on if you jump max steps
+
+Example:
+     */
 }

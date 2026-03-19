@@ -44,4 +44,30 @@ public class longestPalindrome {
 
         return t[l][r] == 1;
     }
+
+    public String longestPalindrome2(String s) {
+        int n = s.length();
+        int maxLen = Integer.MIN_VALUE;
+        int start = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (isPalindrome(s, i, j) && (j - i + 1) > maxLen) {
+                    start = i;
+                    maxLen = j - i + 1;
+                }
+            }
+        }
+
+        return s.substring(start, start + maxLen);
+    }
+
+    private boolean isPalindrome(String s, int l, int r) {
+        //When l >= r, it means we have compared all characters successfully, so the substring is a palindrome.”
+        if (l >= r) return true;
+
+        if (s.charAt(l) != s.charAt(r)) return false;
+
+        return isPalindrome(s, l + 1, r - 1);
+    }
 }
