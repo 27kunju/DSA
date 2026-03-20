@@ -29,4 +29,24 @@ public class longestCommonSubsquence {
 
         return LCS(text1, text2, m, n);
     }
+
+    //recurssion based
+    public int longestCommonSubsequence2(String s1, String s2 ){
+        int m = s1.length();
+        int n = s2.length();
+        return lcs2(s1,s2,m,n);
+    }
+
+    public int lcs2(String s1, String s2,int m , int n ){
+        if(n == 0 || m == 0) return 0;
+        if(s1.charAt(n) == s2.charAt(m)){
+            return 1+lcs2(s1,s2,m-1, n-1);
+        }
+        return Math.max(lcs2(s1,s2,m-1,n) , lcs2(s1,s2,m,n-1));
+
+        //Time Complexity = O(2^(m+n)
+
+    }
+
+
 }

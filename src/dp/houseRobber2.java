@@ -2,7 +2,8 @@ package dp;
 
 public class houseRobber2 {
     public int rob(int[] nums) {
-        if(nums.length <2) return nums[0];
+        if (nums.length == 0) return 0;          // handle empty array
+        if (nums.length == 1) return nums[0];
 
         //2,3,4,1,5
 
@@ -22,7 +23,10 @@ public class houseRobber2 {
     }
 
     public int robHelper(int[] nums) {
-        if(nums.length <2) return nums[0];
+        if (nums.length == 0) return 0;          // handle empty array
+        if (nums.length == 1) return nums[0];
+
+
 
         int[] dp = new int[nums.length];
 

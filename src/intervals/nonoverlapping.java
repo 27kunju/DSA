@@ -17,9 +17,11 @@ public class nonoverlapping {
             if(intervals[i][0] >=intervals[previous_interval][1]){
                 previous_interval =i;
                 count++;
+                //here we are only counting non overlap intervals
             }
         }
 
+        //total - non-overalap interval interval = overlap interval
         return intervals.length - count;
 
     }

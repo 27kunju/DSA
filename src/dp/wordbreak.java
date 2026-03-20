@@ -6,38 +6,31 @@ import java.util.*;
 
 public class wordbreak {
 
-    Set<String> set;
-    int[] memo;
-    int n;
+    private Boolean[] memo;
+    private Set<String> set;
+    private int n;
 
-    public boolean wordBreak2(String s, List<String> wordDict) {
-        set = new HashSet<>(wordDict);
+    public boolean wordBreak(String s, List<String> wordDict) {
         n = s.length();
-        memo = new int[n];
-
-        Arrays.fill(memo, -1); // -1 = not computed
+        memo = new Boolean[n]; // memo[i] → can we break from index i
+        set = new HashSet<>(wordDict);
 
         return solve(0, s);
     }
 
-    public boolean solve(int idx, String s) {
-        if (idx == n) return true;
+    private boolean solve(int idx, String s) {
 
-        if (memo[idx] != -1) {
-            return memo[idx] == 1;
-        }
+        if (idx == n) return true;
+        if (memo[idx] != null) return memo[idx];
 
         for (int l = idx + 1; l <= n; l++) {
-            String temp = s.substring(idx, l);
 
+            String temp = s.substring(idx, l);
             if (set.contains(temp) && solve(l, s)) {
-                memo[idx] = 1;
-                return true;
+                return memo[idx] = true;
             }
         }
-
-        memo[idx] = 0;
-        return false;
+        return memo[idx] = false;
     }
 
 }

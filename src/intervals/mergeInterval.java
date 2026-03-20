@@ -14,14 +14,14 @@ public class mergeInterval {
 
         List<int[]> result = new ArrayList<>();
 
-        int[] newInterval = intervals[0];
-        result.add(newInterval);
+        int[] previousInterval = intervals[0];
+        result.add(previousInterval);
         for(int[] interval :intervals){
-            if(interval[0] <= newInterval[1])
-                newInterval[1] = Math.max(newInterval[1], interval[1]);
+            if(interval[0] <= previousInterval[1])
+                previousInterval[1] = Math.max(previousInterval[1], interval[1]);
             else{
-                newInterval = interval;
-                result.add(newInterval);
+                previousInterval = interval;
+                result.add(previousInterval);
             }
         }
 

@@ -24,9 +24,21 @@ public class climbStrairs {
     1,2,1
     1,1,2
 
+    In Climbing Stairs, we are NOT counting steps,
+👉 We are counting number of distinct ways (paths) to reach the top.
+
 
     Without DP, we recompute the same steps multiple times. By storing results of smaller steps (like 2, 3, 4),
      we reuse them and reduce time complexity
+
+What Happens If You Use n?
+int[] dp = new int[n];
+
+Then indices are:
+
+0 → n-1
+
+👉 You cannot access dp[n] → ArrayIndexOutOfBounds
 
      */
 }

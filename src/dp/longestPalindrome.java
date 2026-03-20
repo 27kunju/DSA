@@ -4,47 +4,41 @@ import java.util.Arrays;
 
 public class longestPalindrome {
 
-    private int[][] t;
+    private Boolean[][] dp;
 
-    public String LongestPalindrome(String s) {
+    public String longestPalindrome1(String s) {
         int n = s.length();
-        int maxlen = Integer.MIN_VALUE;
-        int startingIndex = 0;
-        t = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(t[i], -1);
-        }
+        int maxLen = 0;
+        int startIndex = 0;
+
+        dp = new Boolean[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
-                if (solve(s, i, j) && j - i + 1 > maxlen) {
-                    startingIndex = i;
-                    maxlen = j - i + 1;
+
+                if (solve(s, i, j)) {
+                    if (j - i + 1 > maxLen) {
+                        startIndex = i;
+                        maxLen = j - i + 1;
+                    }
                 }
             }
         }
 
-        return s.substring(startingIndex, startingIndex + maxlen);
+        return s.substring(startIndex, startIndex + maxLen);
     }
 
     private boolean solve(String s, int l, int r) {
-        if (l >= r) {
-            return true;
-        }
+        if (l >= r) return true;
 
-        if (t[l][r] != -1) {
-            return t[l][r] == 1;
-        }
+        if (dp[l][r] != null) return dp[l][r];
 
         if (s.charAt(l) == s.charAt(r)) {
-            t[l][r] = solve(s, l + 1, r - 1) ? 1 : 0;
-        } else {
-            t[l][r] = 0;
+            return dp[l][r] = solve(s, l + 1, r - 1);
         }
 
-        return t[l][r] == 1;
+        return dp[l][r] = false;
     }
-
     public String longestPalindrome2(String s) {
         int n = s.length();
         int maxLen = Integer.MIN_VALUE;
@@ -69,5 +63,20 @@ public class longestPalindrome {
         if (s.charAt(l) != s.charAt(r)) return false;
 
         return isPalindrome(s, l + 1, r - 1);
+    }
+
+    private boolean isPalindrome2(String s, int l ,int r){
+
+        while(l<r){
+            if(s.charAt(l) != s.charAt(r)){
+                return false;
+            }
+
+            l++;
+            r--;
+        }
+
+        return true;
+
     }
 }

@@ -1,5 +1,8 @@
 package intervals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class insertInterval {
     public int[][] insert(int[][] intervals, int[] newInterval) {
 
@@ -28,4 +31,46 @@ public class insertInterval {
 
         return java.util.Arrays.copyOf(result, j);
     }
+
+
+    public int[][] insert2(int[][] intervals, int[] newInterval) {
+        List<int[]> result = new ArrayList<>();
+
+        for (int[] curr : intervals) {
+
+            // Case 1: No overlap, current interval is completely before newInterval
+            if (curr[1] < newInterval[0]) {
+                result.add(curr);
+            }
+            // Case 2: No overlap, current interval is completely after newInterval
+            else if (curr[0] > newInterval[1]) {
+                result.add(newInterval);
+                newInterval = curr; // update newInterval for next comparisons
+            }
+            // Case 3: Overlap (FULL CONDITION)
+            else if (curr[0] <= newInterval[1] && newInterval[0] <= curr[1]) {
+                newInterval[0] = Math.min(newInterval[0], curr[0]);
+                newInterval[1] = Math.max(newInterval[1], curr[1]);
+            }
+        }
+
+        // Add the last interval
+        result.add(newInterval);
+
+        return result.toArray(new int[result.size()][]);
+    }
+
+    /*
+    In Our Code Context
+
+intervals[i] = [start, end]
+
+newInterval = [newStart, newEnd]
+
+So overlap becomes:
+
+intervals[i][0] <= newInterval[1]
+AND
+newInterval[0] <= intervals[i][1]
+     */
 }
