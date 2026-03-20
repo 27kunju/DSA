@@ -19,23 +19,22 @@ public class LongestSubstringWithoutRepeating {
             char ch = s.charAt(j);
             map.put(ch, map.getOrDefault(ch, 0) + 1);
 
-            // check window condition
-            if (map.size() == j - i + 1) {
-                // valid window (all unique characters)
-                maxLen = Math.max(maxLen, j - i + 1);
-            } else if (map.size() < j - i + 1) {
-                // shrink until condition becomes valid
-                while (map.size() < j - i + 1) {
-                    char leftChar = s.charAt(i);
-                    map.put(leftChar, map.get(leftChar) - 1);
-                    if (map.get(leftChar) == 0) {
-                        map.remove(leftChar);
-                    }
-                    i++;
+            // if window is invalid, shrink until valid
+            while (map.size() < j - i + 1) {
+                char leftChar = s.charAt(i);
+                map.put(leftChar, map.get(leftChar) - 1);
+                if (map.get(leftChar) == 0) {
+                    map.remove(leftChar);
                 }
+                i++;
             }
+
+            // valid window (all unique characters)
+            maxLen = Math.max(maxLen, j - i + 1);
+
             j++;
         }
+
         return maxLen;
     }
 
