@@ -1,27 +1,34 @@
 package intervals;
 
-import java.util.TreeMap;
+import java.util.PriorityQueue;
+import java.util.Arrays;
 
+
+//Find the minimum number of meeting rooms required so that no meetings overlap.
 public class meetingroom2 {
-    public int minMeetingRooms(int[] start, int[] end) {
-        int n = start.length;
+    public int minMeetingRooms(int[][] intervals) {
 
-        // Ordered map: time -> change in active meetings
-        TreeMap<Integer, Integer> events = new TreeMap<>();
+        // Step 1: Sort by start time
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
-        for (int i = 0; i < n; i++) {
-            events.put(start[i], events.getOrDefault(start[i], 0) + 1);
-            events.put(end[i],   events.getOrDefault(end[i],   0) - 1);
+        // Min heap → stores end times
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int i = 0; i < intervals.length; i++) {
+
+            int start = intervals[i][0];
+            int end = intervals[i][1];
+
+            // If room is free, reuse it
+            if (!minHeap.isEmpty() && minHeap.peek() <= start) {
+                minHeap.poll();
+            }
+
+            // Allocate room (push end time)
+            minHeap.offer(end);
         }
 
-        int overlaps = 0;
-        int maxOverlaps = 0;
-
-        for (int delta : events.values()) {
-            overlaps += delta;
-            maxOverlaps    = Math.max(maxOverlaps, overlaps);
-        }
-
-        return maxOverlaps;
+        return minHeap.size();
     }
+
 }

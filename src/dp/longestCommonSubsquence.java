@@ -12,7 +12,7 @@ public class longestCommonSubsquence {
         if (t[m][n] != -1)
             return t[m][n];
 
-        if (s1.charAt(m - 1) == s2.charAt(n - 1))
+        if (s1.charAt(m ) == s2.charAt(n))
             return t[m][n] = 1 + LCS(s1, s2, m - 1, n - 1);
 
         return t[m][n] = Math.max(LCS(s1, s2, m, n - 1), LCS(s1, s2, m - 1, n));

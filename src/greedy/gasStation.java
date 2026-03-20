@@ -24,4 +24,9 @@ public class gasStation {
         return startIndex;
     }
 
+    /*
+    If we fail at index i, none of the stations before i can be a valid start.
+    So we reset startIndex to i+1.Since total gas is sufficient, the final startIndex will complete the circuit.
+     */
+
 }

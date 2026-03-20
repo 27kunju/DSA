@@ -11,6 +11,12 @@ public class jumpgame2 {
         for(int i = 0;i< nums.length;i++){
             coverage = Math.max(coverage,i+nums[i]);
 
+            //if (i == lastIndex)
+            //
+            //👉 Means:
+            //
+            //“I have used all positions possible with current jump”
+
             if(i==lastIndex){
                 lastIndex = coverage;
                 totalJumps++;
