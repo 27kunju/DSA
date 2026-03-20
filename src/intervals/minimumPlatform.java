@@ -27,6 +27,8 @@ public class minimumPlatform {
                 maxPlatforms = Math.max(maxPlatforms, platforms);
                 i++;
             } else {
+
+                //When a train departs, it frees a platform, so we decrement the platform count.
                 platforms--;
                 j++;
             }

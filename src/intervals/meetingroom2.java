@@ -14,6 +14,9 @@ public class meetingroom2 {
         // Min heap → stores end times
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
+        //Java’s PriorityQueue is a min heap by default,
+        // so it automatically keeps the smallest end time at the top without requiring explicit sorting
+
         for (int i = 0; i < intervals.length; i++) {
 
             int start = intervals[i][0];
@@ -29,6 +32,39 @@ public class meetingroom2 {
         }
 
         return minHeap.size();
+    }
+
+    public int minMeetingRooms2(int[][] intervals) {
+
+        int n = intervals.length;
+
+        int[] start = new int[n];
+        int[] end = new int[n];
+
+        // Separate start and end arrays
+        for (int i = 0; i < n; i++) {
+            start[i] = intervals[i][0];
+            end[i] = intervals[i][1];
+        }
+
+        Arrays.sort(start);
+        Arrays.sort(end);
+
+        int rooms = 0;
+        int endPtr = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            if (start[i] < end[endPtr]) {
+                // Need new room
+                rooms++;
+            } else {
+                // Reuse room
+                endPtr++;
+            }
+        }
+
+        return rooms;
     }
 
 }
