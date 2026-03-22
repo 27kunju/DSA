@@ -44,4 +44,9 @@ public class LowestCommonAncestorMain {
         TreeNode lca = lowestCommonAncestor(root, p, q);
         System.out.println("Lowest Common Ancestor of " + p.val + " and " + q.val + " is: " + lca.val);
     }
+
+    /*
+    Time Complexity: O(n), since we traverse each node once
+Space Complexity: O(h), due to recursion stack
+     */
 }

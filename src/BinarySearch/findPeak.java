@@ -5,7 +5,7 @@ package BinarySearch;
 Since there will be one peak element
  */
 public class findPeak {
-    public int peakIndexInMountainArray(int[] arr) {
+    public static int peakIndexInMountainArray(int[] arr) {
 
         for (int i = 1; i < arr.length - 1; i++) {
             if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
@@ -34,6 +34,6 @@ public class findPeak {
 
     public static void main(String[] args) {
         int[] nums = {1,2,4,5,6,9};
-        System.out.println(peakIndexInMountainArray2(nums));
+        System.out.println(peakIndexInMountainArray(nums));
     }
 }
