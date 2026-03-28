@@ -30,4 +30,30 @@ public class StockSpan {
 
         System.out.println("Stock Span: " + Arrays.toString(span));
     }
+
+    public int[] stockSpan(int[] nums){
+        int n = nums.length;
+        int[] res = new int[n];
+
+        for(int i = 0;i<n;i++){
+            int span = 0;
+
+            //why direction is backwards, we have to ith previous position first
+            //i,i-1,i-2....0
+            for (int j = i; j >= 0; j--) {
+                if (nums[j] <= nums[i]) {
+                    span++;
+                } else {
+                    break;
+                }
+            }
+
+
+            res[i] = span;
+        }
+
+        return res;
+
+
+    }
 }

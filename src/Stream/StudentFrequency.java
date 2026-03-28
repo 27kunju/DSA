@@ -2,6 +2,7 @@ package Stream;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 class Student1 {
@@ -53,5 +54,7 @@ public class StudentFrequency {
         frequencyMap.forEach((student, count) ->
                 System.out.println("Frequency of student " + student + " is: " + count)
         );
+
     }
+
 }
