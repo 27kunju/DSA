@@ -296,8 +296,8 @@ public class practice {
 
 
         Atomic keyword in java
-        1.Atomic classes ensure that an operation will be an tomic operation.
-        2.Atomic variables have the added feature of amking non atomic operations atomic
+        1.Atomic classes ensure that an operation will be an atomic operation.
+        2.Atomic variables have the added feature of making non atomic operations atomic
 
 
 
