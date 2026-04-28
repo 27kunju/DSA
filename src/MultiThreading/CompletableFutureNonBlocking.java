@@ -27,6 +27,8 @@ public class CompletableFutureNonBlocking {
 
         System.out.println("After callback");
 
+        future.join();
+
         executor.shutdown();
     }
 }
