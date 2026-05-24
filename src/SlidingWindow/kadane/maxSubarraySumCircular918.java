@@ -60,13 +60,12 @@ public class maxSubarraySumCircular918 {
             minSoFar = Math.min(minSoFar, minEnding);
         }
 
-        int circularSum = totalSum - minSoFar;
 
         // Edge case: all numbers are negative
-        if (maxSoFar > 0) {
-            return Math.max(maxSoFar, circularSum);
+        if (maxSoFar < 0) {
+            return maxSoFar;
         }
 
-        return maxSoFar;
+        return Math.max(maxSoFar,  totalSum - minSoFar);
     }
 }

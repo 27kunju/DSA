@@ -6,30 +6,32 @@ import java.util.List;
 public class combinations77 {
 
     List<List<Integer>> result = new ArrayList<>();
-
     public List<List<Integer>> combine(int n, int k) {
-        backtrack(1, n, k, new ArrayList<>());
+
+        solve(1,n,k, new ArrayList<>());
+
         return result;
     }
 
-    private void backtrack(int start, int n, int k, List<Integer> temp) {
+    public void solve(int index, int n, int k , List<Integer> temp ){
 
-        // base case: k elements selected
-        if (temp.size() == k) {
+        if(k==0){
             result.add(new ArrayList<>(temp));
             return;
         }
 
-        for (int i = start; i <= n; i++) {
+        if(index> n){
+            return;
+        }
 
-            // choose
+        for(int i = index; i<=n;i++){
+
             temp.add(i);
 
-            // explore
-            backtrack(i + 1, n, k, temp);
+            solve(i+1,n,k-1, temp);
 
-            // un-choose
-            temp.removeLast();
+            temp.remove(temp.size()-1);
+
         }
     }
 }
