@@ -24,7 +24,7 @@ public class BackCheckThenWrite implements  Runnable{
     public static void main(String[] args) {
         BackCheckThenWrite backCheckThenWrite = new BackCheckThenWrite();
         Thread t1 = new Thread(backCheckThenWrite, "ash");
-        Thread t2 = new Thread(backCheckThenWrite, "tanu");
+        Thread t2 = new Thread(backCheckThenWrite, "tanuj");
 
         t1.start();
         t2.start();
