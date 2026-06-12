@@ -35,7 +35,7 @@ public class ProducerConsumerExample {
 
         Thread consumerThread = new Thread(() -> {
             for(int i = 0; i< 10; i++){
-                synchronized (buffer){
+                synchronized(buffer){
                     //underflow check
                     while(buffer.isEmpty()){
                         try {
