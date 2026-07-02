@@ -53,4 +53,74 @@ public class DijkstraWithoutHeap {
 
         return dist;
     }
+
+
+    public int[] dijkstra(int V,
+                          int[][] edges,
+                          int src) {
+
+        // create adjacency matrix
+        int[][] cost = new int[V][V];
+
+        for (int[] edge : edges) {
+
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+
+            cost[u][v] = w;
+            cost[v][u] = w;
+        }
+
+        int[] dist = new int[V];
+
+        boolean[] visited = new boolean[V];
+
+        Arrays.fill(dist, Integer.MAX_VALUE);
+
+        dist[src] = 0;
+
+        // Dijkstra
+        for (int k = 0; k < V - 1; k++) {
+
+            int min = Integer.MAX_VALUE;
+
+            int u = -1;
+
+            // find minimum unvisited node
+            for (int i = 0; i < V; i++) {
+
+                if (!visited[i]
+                        && dist[i] < min) {
+
+                    min = dist[i];
+                    u = i;
+                }
+            }
+
+            if (u == -1) {
+                break;
+            }
+
+            visited[u] = true;
+
+            // relax neighbors
+            for (int v = 0; v < V; v++) {
+
+                if (!visited[v]
+                        && cost[u][v] != 0
+                        && dist[u] != Integer.MAX_VALUE
+                        && dist[u] + cost[u][v] < dist[v]) {
+
+                    dist[v] =
+                            dist[u] + cost[u][v];
+                }
+            }
+        }
+
+        return dist;
+    }
+
+
+
 }
