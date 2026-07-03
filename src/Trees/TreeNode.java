@@ -15,6 +15,7 @@ public class TreeNode {
 
     }
 
+
     public static void inOrderTraversal(TreeNode root){
         if(root == null) return;
 
