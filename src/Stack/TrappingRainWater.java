@@ -6,6 +6,8 @@ public class TrappingRainWater {
     public static void main(String[] args) {
         int[] height = {3,0,0,2,0 , 4};
         System.out.println("Trapped Rain Water = " + trap3(height));
+
+
     }
 
     //using bruteforce
